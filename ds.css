@@ -220,7 +220,7 @@ summary.acc__q::-webkit-details-marker { display: none; }
 .rows li i { font-style: normal; color: var(--meta); }
 /* Услуги (блок 4, вариант А′): карточка на направление во всю панель; слева картинка 400 во всю высоту карточки, вплотную к краям; справа заголовок, текст, список */
 /* Карточки услуг (блок 4): три в ряд; картинка 4:3, заголовок, текст, 5 строк списка, остаток — каждая строка общая для трёх карточек, пункты списков стоят друг напротив друга. Строк списка в карточке — 5. */
-.svc-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-card); grid-template-rows: repeat(8, auto) 1fr; }
+.svc-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-card); grid-template-rows: repeat(8, auto) 1fr; }
 .svc-card { display: grid; grid-row: span 9; grid-template-rows: subgrid; row-gap: 0; }
 .svc-card > .slot:first-child { aspect-ratio: 4 / 3; }
 .svc-card .rows { margin-top: 24px; display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
