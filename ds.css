@@ -194,7 +194,7 @@ summary.acc__q::-webkit-details-marker { display: none; }
 @media (max-width: 640px) { .hdr__end { gap: 8px; } .hdr__end .btn { padding: 12px 14px; } .btn__long, .hdr .lang { display: none; } .btn__short { display: inline; } .btn--menu { display: inline-flex; } }
 
 .ftr { background: var(--panel); border-radius: var(--r-panel) var(--r-panel) 0 0; padding: 64px 0 32px; }
-.ftr__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+.ftr__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
 .ftr__col { display: grid; gap: 10px; align-content: start; font-size: 14px; color: var(--text); }
 .ftr__col--brand { gap: 16px; }
 .ftr__h { font: 500 13px/1 var(--font); color: var(--ink); margin-bottom: 6px; }

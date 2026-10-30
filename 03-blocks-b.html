@@ -5,8 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>LMedia DS — 03 Блоки 6–11</title>
-<link rel="stylesheet" href="ds.css?v=0b3b53ebcf">
+<link rel="stylesheet" href="ds.css?v=ac0364242d">
 <style>
+  .sub { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-card); }
+  .sub .card { display: flex; flex-direction: column; align-items: flex-start; }
+  .sub .card > .body { margin-bottom: 24px; }
+  .sub .card > :last-child { margin-top: auto; }
+  .sub__form { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+  .sub__form .input { flex: 1 1 220px; min-width: 0; }
+  @media (max-width: 640px) { .sub { grid-template-columns: 1fr; } }
   .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-card); }
   .why .card { display: grid; align-content: start; }
   .how { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
@@ -162,6 +169,28 @@
     </div>
   </div>
 </section>
+
+<!-- 10 · Subscribe -->
+<section class="section wrap" id="subscribe">
+  <div class="sec-head">
+    <div><span class="tag">Подписка</span><h2 class="h2">Рассылка о сроках<br> и новых правилах</h2></div>
+    <div class="sec-head__aside"><p class="lead">Какие платежи и декларации предстоят и кого они касаются. Если поменялись правила, объясняем, что это значит для вас. Без рекламы.</p></div>
+  </div>
+  <div class="panel">
+    <div class="sub">
+      <div class="card">
+        <h3 class="h3">Telegram-канал</h3>
+        <p class="body">Сроки и новые правила постами в канале <span class="ph">[@канал]</span>.</p>
+        <a class="btn btn--primary" href="#">Открыть канал</a>
+      </div>
+      <div class="card">
+        <h3 class="h3">На почту</h3>
+        <p class="body">То же одним письмом на ваш адрес.</p>
+        <form class="sub__form" onsubmit="return false"><input class="input" id="sub-email" type="email" placeholder="you@example.com" aria-label="Email для подписки"><button class="btn btn--secondary" type="submit">Подписаться</button></form>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <!-- 11 · Footer -->
@@ -186,6 +215,11 @@
         <span class="ph">[email]</span>
         <span class="ph">[телефон]</span>
         <span class="ph">[Telegram / WhatsApp]</span>
+      </div>
+      <div class="ftr__col">
+        <span class="ftr__h">Читать нас</span>
+        <span>Telegram-канал <span class="ph">[@канал]</span></span>
+        <span>Instagram <span class="ph">[@instagram]</span></span>
       </div>
     </div>
     <div class="ftr__legal">
