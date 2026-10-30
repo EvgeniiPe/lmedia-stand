@@ -17,7 +17,9 @@
   .sit .step__t { margin-top: 0; text-wrap: balance; }
   .sit .link { padding-top: 4px; margin-top: auto; }
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
-  .steps .step { border-top: 1px solid var(--line); padding-top: 20px; }
+  .steps .step { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; align-items: flex-start; }
+  .steps .step__d { margin-bottom: 14px; }
+  .steps .step > .tag { margin-top: auto; }
   .steps .step--end { display: grid; gap: 16px; align-content: start; justify-items: start; }
   .steps .step--end .step__t { margin-top: 0; }
   @media (min-width: 641px) { br.m { display: none; } }
@@ -65,7 +67,7 @@
         <a class="btn btn--primary" href="03-blocks-b.html#contact">Записаться на звонок</a>
         <a class="btn btn--secondary" href="#start">Как открыть дело</a>
       </div>
-      <p class="small">Звонок 20 минут, бесплатно: скажем, что делать дальше и кто из нас нужен.</p>
+      <p class="small">Звонок 20 минут, бесплатно: скажем, что делать дальше и кто из нас нужен.</p>
     </div>
   </div>
   <div class="slot hero__slot"><span class="slot__cap">картинка · команда или Флоренция · 3:1, на телефоне 16:9</span></div>
@@ -80,11 +82,11 @@
   <div class="panel">
     <div class="sit">
       <div class="card"><span class="step__n">01</span><p class="step__t">Хотите открыть дело в Италии и не знаете, с чего начать.</p><a class="link" href="#start">Как открыть дело</a></div>
-      <div class="card"><span class="step__n">02</span><p class="step__t">Partita IVA (номер для работы и счетов) уже есть, а декларации, взносы и сроки — загадка.</p><a class="link" href="#services">Бухгалтерия и налоги</a></div>
-      <div class="card"><span class="step__n">03</span><p class="step__t">Нужно подписать договор аренды, поставки или с партнёром — и понять его по-настоящему.</p><a class="link" href="#services">Юридическое сопровождение</a></div>
-      <div class="card"><span class="step__n">04</span><p class="step__t">Бухгалтер, юрист и маркетолог у вас разные и не знают друг о друге.</p><a class="link" href="03-blocks-b.html#how">Как мы работаем вместе</a></div>
-      <div class="card"><span class="step__n">05</span><p class="step__t">Дело открыто, а клиенты о вас не знают: нет сайта на итальянском, нет вас в поиске.</p><a class="link" href="#services">Маркетинг и коммуникация</a></div>
-      <div class="card"><span class="step__n">06</span><p class="step__t">Пришло письмо из налоговой (Agenzia delle Entrate) или соцстраха (INPS), и непонятно, что оно значит.</p><a class="link" href="03-blocks-b.html#contact">Пришлите его через форму</a></div>
+      <div class="card"><span class="step__n">02</span><p class="step__t">Partita IVA (номер для работы и счетов) уже есть, а декларации, взносы и сроки — загадка.</p><a class="link" href="#services">Бухгалтерия и налоги</a></div>
+      <div class="card"><span class="step__n">03</span><p class="step__t">Нужно подписать договор аренды, поставки или с партнёром — и понять его по-настоящему.</p><a class="link" href="#services">Юридическое сопровождение</a></div>
+      <div class="card"><span class="step__n">04</span><p class="step__t">Бухгалтер, юрист и маркетолог у вас разные и не знают друг о друге.</p><a class="link" href="03-blocks-b.html#how">Как мы работаем вместе</a></div>
+      <div class="card"><span class="step__n">05</span><p class="step__t">Дело открыто, а клиенты о вас не знают: нет сайта на итальянском, нет вас в поиске.</p><a class="link" href="#services">Маркетинг и коммуникация</a></div>
+      <div class="card"><span class="step__n">06</span><p class="step__t">Пришло письмо из налоговой (Agenzia delle Entrate) или соцстраха (INPS), и непонятно, что оно значит.</p><a class="link" href="03-blocks-b.html#contact">Пришлите его через форму</a></div>
     </div>
   </div>
 </section>
@@ -104,12 +106,12 @@
         <div class="slot"><span class="slot__cap">картинка · ≈1:1, на телефоне 16:9</span></div>
         <div class="svc-row__main">
           <h3 class="h3">Юридическое сопровождение</h3>
-          <p class="body">Договоры, регистрация и споры — с адвокатом, который объясняет на <span class="ph">[языки адвоката]</span>.</p>
+          <p class="body">Договоры, регистрация и споры — с адвокатом, который объясняет на <span class="ph">[языки адвоката]</span>.</p>
           <ul class="rows">
-        <li><span class="ico" aria-hidden="true"></span><span>Что позволяет ваш статус пребывания — проверка до старта</span></li>
-        <li><span class="ico" aria-hidden="true"></span><span>Форма бизнеса и регистрация: ИП <i>(ditta individuale)</i>, ООО <i>(SRL)</i> или упрощённое ООО <i>(SRLS)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Что позволяет ваш статус пребывания — проверка до старта</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Форма бизнеса и регистрация: ИП <i>(ditta individuale)</i>, ООО <i>(SRL)</i> или упрощённое ООО <i>(SRLS)</i></span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Договоры с клиентами, поставщиками, партнёрами</span></li>
-        <li><span class="ico" aria-hidden="true"></span><span>Аренда помещения и уведомление об открытии <i>(SCIA)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Аренда помещения и уведомление об открытии <i>(SCIA)</i></span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Претензии и споры</span></li>
       </ul>
         </div>
@@ -120,7 +122,7 @@
           <h3 class="h3">Бухгалтерия и налоги</h3>
           <p class="body">Partita IVA, режим, учёт и платежи — по календарю, а не из письма налоговой.</p>
           <ul class="rows">
-        <li><span class="ico" aria-hidden="true"></span><span>Открытие partita IVA <i>(номер для работы и счетов)</i> и кода деятельности ATECO</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Открытие partita IVA <i>(номер для работы и счетов)</i> и кода деятельности ATECO</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Упрощённый режим forfettario или обычный — расчёт на ваших цифрах</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Учёт и электронные счета <i>(fattura elettronica)</i></span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Декларации, НДС и платежи по F24 <i>(единая платёжка налогов)</i></span></li>
@@ -138,7 +140,7 @@
         <li><span class="ico" aria-hidden="true"></span><span>Название, бренд и тексты на итальянском</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Сайт, который находят в Google</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Пресса, отзывы, карточка в Google Maps</span></li>
-        <li><span class="ico" aria-hidden="true"></span><span>Проверка «эко»-обещаний в рекламе <i>(с 27.09.2026 в ЕС их нужно подтверждать)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Проверка «эко»-обещаний в рекламе <i>(с 27.09.2026 в ЕС их нужно подтверждать)</i></span></li>
       </ul>
         </div>
       </div>
@@ -150,17 +152,17 @@
 <section class="section wrap" id="start">
   <div class="sec-head">
     <div><span class="tag">Открыть дело</span><h2 class="h2">Как открыть дело<br> в Италии — по шагам</h2></div>
-    <div class="sec-head__aside"><p class="lead">Путь от идеи до первого выставленного счёта. Под каждым шагом — кто из нас его ведёт.</p></div>
+    <div class="sec-head__aside"><p class="lead">Путь от идеи до первого выставленного счёта. Под каждым шагом — кто из нас его ведёт.</p></div>
   </div>
   <ol class="steps">
-    <li class="step"><div class="step__n">01</div><div class="step__t">Право на работу</div><p class="step__d">Проверяем, что позволяет ваш статус пребывания.</p><span class="tag">Адвокат</span></li>
+    <li class="step"><div class="step__n">01</div><div class="step__t">Право на работу</div><p class="step__d">Проверяем, что позволяет ваш статус пребывания.</p><span class="tag">Адвокат</span></li>
     <li class="step"><div class="step__n">02</div><div class="step__t">Codice fiscale</div><p class="step__d">Личный налоговый код, как ИНН. Без него не получить partita IVA и не открыть счёт в банке.</p><span class="tag">Бухгалтер</span></li>
     <li class="step"><div class="step__n">03</div><div class="step__t">ИП или фирма</div><p class="step__d">Сравниваем налоги и обязанности на ваших цифрах.</p><span class="tag">Бухгалтер + адвокат</span></li>
     <li class="step"><div class="step__n">04</div><div class="step__t">Регистрация</div><p class="step__d">Налоговая, INPS, торговая палата — только то, что нужно именно вам.</p><span class="tag">Бухгалтер</span></li>
-    <li class="step"><div class="step__n">05</div><div class="step__t">Помещение и разрешения</div><p class="step__d">Договор аренды и уведомление об открытии (SCIA).</p><span class="tag">Адвокат</span></li>
+    <li class="step"><div class="step__n">05</div><div class="step__t">Помещение и разрешения</div><p class="step__d">Договор аренды и уведомление об открытии (SCIA).</p><span class="tag">Адвокат</span></li>
     <li class="step"><div class="step__n">06</div><div class="step__t">Банк и выставление счетов</div><p class="step__d">Расчётный счёт в банке и электронные счета клиентам (fattura elettronica).</p><span class="tag">Бухгалтер</span></li>
     <li class="step"><div class="step__n">07</div><div class="step__t">Первые клиенты</div><p class="step__d">Название, сайт на итальянском, карточка в Google Maps.</p><span class="tag">Маркетолог</span></li>
-    <li class="step step--end"><div class="step__t">Не хотите проходить это одни? Ведём весь путь целиком.</div><a class="btn btn--primary" href="03-blocks-b.html#contact">Записаться на звонок</a></li>
+    <li class="step step--end"><div class="step__t">Не хотите проходить это одни? Ведём весь путь целиком.</div><a class="btn btn--primary" href="03-blocks-b.html#contact">Записаться на звонок</a></li>
   </ol>
 </section>
 </main>

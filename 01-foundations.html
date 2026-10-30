@@ -50,7 +50,9 @@
   .hdr-demo__l { display: grid; gap: var(--gap-card); grid-template-rows: auto 1fr; }
   .is-active { transform: translateY(1px); }
   .steps-demo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
-  .steps-demo .step { border-top: 1px solid var(--line); padding-top: 20px; }
+  .steps-demo .step { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; align-items: flex-start; }
+  .steps-demo .step__d { margin-bottom: 14px; }
+  .steps-demo .step > .tag { margin-top: auto; }
   @media (max-width: 640px) { br.d { display: none; } }
   .only-mob { display: none; }
   @media (max-width: 900px) { .hdr-demo { grid-template-columns: 1fr; } .steps-demo { grid-template-columns: 1fr 1fr; } .only-desk { display: none; } .only-mob { display: block; } }
@@ -123,7 +125,7 @@
   <div class="panel panel--pad">
     <div class="card">
       <div class="ts"><div class="caption"><b>display · 500</b>68 → 40 · интерлиньяж 1.02 · трекинг −3%</div><div class="display">Одна команда</div></div>
-      <div class="ts"><div class="caption"><b>h2 · 500</b>56 → 34 · 1.14 · −1,5%</div><div class="h2">Как мы работаем</div></div>
+      <div class="ts"><div class="caption"><b>h2 · 500</b>56 → 34 · 1.14 · −1,5%</div><div class="h2">Как мы работаем</div></div>
       <div class="ts"><div class="caption"><b>h3 · 500</b>24 → 20 · 1.25 · −1%</div><div class="h3">Бухгалтерия и налоги</div></div>
       <div class="ts"><div class="caption"><b>title · 500</b>18 · 1.35 · 0 · шаги, ситуации, вопросы</div><div class="step__t" style="margin:0">Право на работу</div></div>
       <div class="ts"><div class="caption"><b>lead · 400</b>18 → 17 · 1.5 · 0</div><div class="lead">Открываем дело, ведём бухгалтерию, готовим договоры.</div></div>
@@ -192,7 +194,7 @@
 <section class="section wrap" id="comp">
   <div class="sec-head">
     <div><span class="tag">Компоненты</span><h2 class="h2">Из чего<br> собран лендинг</h2></div>
-    <div class="sec-head__aside"><p class="lead">У каждого компонента — размеры, токены и состояния. На лендинге — одна тёмная кнопка на секцию; здесь их несколько, чтобы показать состояния.</p></div>
+    <div class="sec-head__aside"><p class="lead">У каждого компонента — размеры, токены и состояния. На лендинге — одна тёмная кнопка на секцию; здесь их несколько, чтобы показать состояния.</p></div>
   </div>
 
   <h3 class="h3 sub" style="margin-top:0">Шапка секции · блоки 2–8</h3>
@@ -200,7 +202,7 @@
     <div><span class="tag">Тег</span><h2 class="h2">Заголовок<br> секции</h2></div>
     <div class="sec-head__aside"><p class="lead">Лид 18 --text в правой колонке до 520. В hero под ним две кнопки и примечание; в остальных секциях — лид и не больше одной тёмной кнопки.</p><div class="cta-row"><span class="btn btn--primary">Записаться на звонок</span><span class="btn btn--secondary">Как открыть дело</span></div><p class="small">Примечание 14 --meta — только в hero.</p></div>
   </div>
-  <div class="spec"><span><b>Компьютер:</b> колонки 1fr и до 520, зазор 40; при 1440 правая колонка — от x 800 до 1320. Она опущена на 50, поэтому верх букв лида вровень с верхом букв первой строки заголовка</span><span><b>Отступы:</b> тег → заголовок 20; в правой колонке всё через 20 — лид → кнопки → примечание; шапка → контент 48, в hero шапка → картинка 56</span><span><b>Hero, блок 2:</b> заголовок display; кнопки в ряд через 8 — тёмная, потом светлая; на 390 обе в одном ряду (316 из 350), не помещаются — перенос, ряды через 8</span><span><b>≤ 900:</b> одна колонка; заголовок → лид 20 (в hero 24); шапка → контент 32, в hero → картинка 40</span></div>
+  <div class="spec"><span><b>Компьютер:</b> колонки 1fr и до 520, зазор 40; при 1440 правая колонка — от x 800 до 1320. Она опущена на 58, поэтому строчные буквы лида вровень со строчными буквами первой строки заголовка</span><span><b>Отступы:</b> тег → заголовок 20; в правой колонке всё через 20 — лид → кнопки → примечание; шапка → контент 48, в hero шапка → картинка 56</span><span><b>Hero, блок 2:</b> заголовок display; кнопки в ряд через 8 — тёмная, потом светлая; на 390 обе в одном ряду (316 из 350), не помещаются — перенос, ряды через 8</span><span><b>≤ 900:</b> одна колонка; заголовок → лид 20 (в hero 24); шапка → контент 32, в hero → картинка 40</span></div>
 
   <h3 class="h3 sub">Действия</h3>
   <div class="panel">
@@ -217,13 +219,13 @@
           <div><span class="btn btn--secondary is-focus">Как открыть дело</span><div class="caption">светлая · фокус</div></div>
           <div><span class="btn btn--secondary is-disabled">Как открыть дело</span><div class="caption">светлая · недоступна</div></div>
         </div>
-        <div class="spec"><span><b>Обе:</b> высота 42 · поля 12/16 · радиус 14 · текст 13/500 · зазор до стрелки 8 · нажатие — сдвиг на 1px вниз</span><span><b>Тёмная:</b> --ink, белый текст, стрелка → текстом 13px; тень: inset 0 .5 0 rgba(255,255,255,.5), inset 0 9 14 −5 rgba(117,123,133,.4), кольцо 1.5 #2c2e34, 0 4 6 rgba(0,0,0,.14) — это токен тени --shadow-btn, его цвета не входят в палитру</span><span><b>Светлая:</b> белая, рамка 1px --line, текст --ink, без стрелки и тени; недоступна — --tag, текст --faint, без рамки</span><span><b>В шапке:</b> та же тёмная, радиус полный</span></div>
+        <div class="spec"><span><b>Обе:</b> высота 42 · поля 12/16 · радиус 14 · текст 13/500 · зазор до стрелки 8 · нажатие — сдвиг на 1px вниз</span><span><b>Тёмная:</b> --ink, белый текст, стрелка → текстом 13px; тень: inset 0 .5 0 rgba(255,255,255,.5), inset 0 9 14 −5 rgba(117,123,133,.4), кольцо 1.5 #2c2e34, 0 4 6 rgba(0,0,0,.14) — это токен тени --shadow-btn, его цвета не входят в палитру</span><span><b>Светлая:</b> белая, рамка 1px --line, текст --ink, без стрелки и тени; недоступна — --tag, текст --faint, без рамки</span><span><b>В шапке:</b> та же тёмная, радиус полный</span></div>
       </div>
       <div class="col2">
       <div class="card">
         <div class="cname">Ссылка, тег, бейдж</div>
         <div class="stack">
-          <div class="row"><a class="link" href="#">Как мы работаем</a><a class="link is-hover" href="#">Наведение</a><a class="link is-focus" href="#">Фокус</a></div>
+          <div class="row"><a class="link" href="#">Как мы работаем</a><a class="link is-hover" href="#">Наведение</a><a class="link is-focus" href="#">Фокус</a></div>
           <div class="caption" style="margin-top:-8px">ссылка · 14/500 --ink + → · наведение: подчёркивание 1px, отступ 3 · фокус: подчёркивание 2px</div>
           <div class="row"><span class="tag">Бухгалтер</span><span class="tag">Адвокат</span></div>
           <div class="caption" style="margin-top:-8px">тег · --tag, 12/400 --text, поля 4/10, радиус 12; не нажимается</div>
@@ -257,7 +259,7 @@
         <div class="step__n">01</div>
         <div class="step__t">Право на работу</div>
         <p class="step__d">Номер 13/500 --meta · заголовок 18/500 --ink, 1.35 · текст 16/24 --text.</p>
-        <span class="tag">Кто ведёт</span>
+        <span class="tag">Кто ведёт</span>
         <div class="step-sep"></div>
         <div class="cname">Ситуация · блок 3</div>
         <div class="step__n">02</div>
@@ -291,12 +293,12 @@
         <div class="slot"><span class="slot__cap">картинка · ≈1:1, на телефоне 16:9</span></div>
         <div class="svc-row__main">
           <h3 class="h3">Юридическое сопровождение</h3>
-          <p class="body">Договоры, регистрация и споры — с адвокатом, который объясняет на <span class="ph">[языки адвоката]</span>.</p>
+          <p class="body">Договоры, регистрация и споры — с адвокатом, который объясняет на <span class="ph">[языки адвоката]</span>.</p>
           <ul class="rows">
-        <li><span class="ico" aria-hidden="true"></span><span>Что позволяет ваш статус пребывания — проверка до старта</span></li>
-        <li><span class="ico" aria-hidden="true"></span><span>Форма бизнеса и регистрация: ИП <i>(ditta individuale)</i>, ООО <i>(SRL)</i> или упрощённое ООО <i>(SRLS)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Что позволяет ваш статус пребывания — проверка до старта</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Форма бизнеса и регистрация: ИП <i>(ditta individuale)</i>, ООО <i>(SRL)</i> или упрощённое ООО <i>(SRLS)</i></span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Договоры с клиентами, поставщиками, партнёрами</span></li>
-        <li><span class="ico" aria-hidden="true"></span><span>Аренда помещения и уведомление об открытии <i>(SCIA)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Аренда помещения и уведомление об открытии <i>(SCIA)</i></span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Претензии и споры</span></li>
       </ul>
         </div>
@@ -307,7 +309,7 @@
           <h3 class="h3">Бухгалтерия и налоги</h3>
           <p class="body">Partita IVA, режим, учёт и платежи — по календарю, а не из письма налоговой.</p>
           <ul class="rows">
-        <li><span class="ico" aria-hidden="true"></span><span>Открытие partita IVA <i>(номер для работы и счетов)</i> и кода деятельности ATECO</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Открытие partita IVA <i>(номер для работы и счетов)</i> и кода деятельности ATECO</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Упрощённый режим forfettario или обычный — расчёт на ваших цифрах</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Учёт и электронные счета <i>(fattura elettronica)</i></span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Декларации, НДС и платежи по F24 <i>(единая платёжка налогов)</i></span></li>
@@ -325,7 +327,7 @@
         <li><span class="ico" aria-hidden="true"></span><span>Название, бренд и тексты на итальянском</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Сайт, который находят в Google</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Пресса, отзывы, карточка в Google Maps</span></li>
-        <li><span class="ico" aria-hidden="true"></span><span>Проверка «эко»-обещаний в рекламе <i>(с 27.09.2026 в ЕС их нужно подтверждать)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Проверка «эко»-обещаний в рекламе <i>(с 27.09.2026 в ЕС их нужно подтверждать)</i></span></li>
       </ul>
         </div>
       </div>
@@ -336,9 +338,9 @@
   <p class="caption demo-label">Пока набор не выбран — кольцо 1px --faint без заливки · 20 — строки списков услуг (блок 4) · 32 — над заголовком карточки, через 20 (блок 6, ниже) · 16 — строки контактов, через 8 (блок 10, боковая колонка) и в кнопке «Прикрепить файл» (форма) · больше нигде</p>
   <div class="panel">
     <div class="why">
-      <div class="card"><span class="ico ico--card" aria-hidden="true"></span><h3 class="h3">Одна история</h3><p class="body">Бухгалтер знает, что написано в договоре, а маркетолог — какой у вас налоговый режим.</p></div>
+      <div class="card"><span class="ico ico--card" aria-hidden="true"></span><h3 class="h3">Одна история</h3><p class="body">Бухгалтер знает, что написано в договоре, а маркетолог — какой у вас налоговый режим.</p></div>
       <div class="card"><span class="ico ico--card" aria-hidden="true"></span><h3 class="h3">Один язык</h3><p class="body">Объясняем по-русски или по-английски, документы готовим по-итальянски.</p></div>
-      <div class="card"><span class="ico ico--card" aria-hidden="true"></span><h3 class="h3">Один контакт</h3><p class="body">Вы пишете одному человеку — <span class="ph">[Имя основного контакта]</span>. Остальных подключаем сами: пересказывать ничего не нужно.</p></div>
+      <div class="card"><span class="ico ico--card" aria-hidden="true"></span><h3 class="h3">Один контакт</h3><p class="body">Вы пишете одному человеку — <span class="ph">[Имя основного контакта]</span>. Остальных подключаем сами: пересказывать ничего не нужно.</p></div>
     </div>
   </div>
 
@@ -364,7 +366,7 @@
   <p class="caption demo-label">Блоки 5 и 7 · на белом, без панели · 4 колонки, зазор 24, между рядами 40 (≤ 900 — 2 колонки; ≤ 640 — 1 колонка, зазор 24) · над шагом линия 1px --line, от неё до номера 20</p>
   <ol class="steps-demo">
     <li class="step"><div class="step__n">01</div><div class="step__t">Право на работу</div><p class="step__d">Номер, заголовок, текст.</p><span class="tag">Адвокат</span></li>
-    <li class="step"><div class="step__n">02</div><div class="step__t">Codice fiscale</div><p class="step__d">Тег — кто ведёт шаг.</p><span class="tag">Бухгалтер</span></li>
+    <li class="step"><div class="step__n">02</div><div class="step__t">Codice fiscale</div><p class="step__d">Тег — кто ведёт шаг.</p><span class="tag">Бухгалтер</span></li>
     <li class="step"><div class="step__n">03</div><div class="step__t">Регистрация</div><p class="step__d">Тег через 14 после текста.</p><span class="tag">Бухгалтер</span></li>
     <li class="step step--end"><div class="step__t">Последняя клетка ряда: заголовок 18/500 и одна тёмная кнопка через 16, без номера.</div><span class="btn btn--primary">Записаться на звонок</span></li>
   </ol>
@@ -392,7 +394,7 @@
           </div>
           <div class="field"><span class="field__label">Файл <span class="caption" style="margin-left:6px">необязательно</span></span><div class="file"><span class="btn btn--secondary"><span class="ico ico--s" aria-hidden="true"></span>Прикрепить файл</span><span class="caption">PDF, JPG или PNG, до [N] МБ</span></div></div>
           <div class="file__item">pismo-agenzia.pdf <span>· 240 КБ</span> <a class="link" href="#" style="font-size:13px">Удалить</a></div>
-          <span class="field__error"><span>Файл больше <span class="ph">[N]</span> МБ — сожмите его или пришлите по почте.</span></span>
+          <span class="field__error"><span>Файл больше <span class="ph">[N]</span> МБ — сожмите его или пришлите по почте.</span></span>
           <label class="check"><span class="check__box"></span><span>Флажок · не отмечен</span></label>
           <label class="check"><span class="check__box is-hover"></span><span>Флажок · наведение</span></label>
           <label class="check"><span class="check__box check__box--on"></span><span>Флажок · отмечен · <u>ссылка в тексте</u></span></label>
@@ -420,8 +422,8 @@
       <h2 class="h2">Частые<br> вопросы</h2>
       <p class="lead">Лид 18 --text. В контактах после него — список шагов, светлая кнопка и строки адреса.</p>
       <ol class="next">
-        <li><b>01</b><span>Оставляете заявку в форме или сразу выбираете время звонка.</span></li>
-        <li><b>02</b><span>Отвечаем и предлагаем время.</span></li>
+        <li><b>01</b><span>Оставляете заявку в форме или сразу выбираете время звонка.</span></li>
+        <li><b>02</b><span>Отвечаем и предлагаем время.</span></li>
         <li><b>03</b><span>После звонка — письменное предложение.</span></li>
       </ol>
       <a class="btn btn--secondary" href="#">Задать свой вопрос</a>

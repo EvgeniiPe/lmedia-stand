@@ -71,7 +71,7 @@ a { color: inherit; text-decoration: none; }
 .wrap { max-width: calc(var(--container) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
 .section { padding-bottom: var(--section); }
 .sec-head { display: grid; grid-template-columns: 1fr minmax(0, 520px); gap: 40px; align-items: start; margin-bottom: 48px; }
-.sec-head__aside { padding-top: 50px; }
+.sec-head__aside { padding-top: 58px; }
 .side { display: grid; grid-template-columns: minmax(0, 400px) 1fr; gap: 64px; align-items: start; }
 .side__col { display: grid; gap: 20px; justify-items: start; }
 @media (max-width: 900px) { .side { grid-template-columns: 1fr; gap: 32px; } }
