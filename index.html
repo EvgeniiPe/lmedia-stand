@@ -9,7 +9,8 @@
 <style>
   .hero { padding-top: 64px; padding-bottom: var(--section); }
   .hero__top { display: grid; grid-template-columns: 1fr minmax(0, 520px); gap: 40px; align-items: start; }
-  .hero__aside { display: grid; gap: 20px; justify-items: start; padding-top: 48px; }
+  .hero__aside { display: grid; gap: 20px; justify-items: start; padding-top: 58px; }
+  .hero__aside .small { margin-top: 8px; }
   .hero__cta { display: flex; flex-wrap: wrap; gap: 8px; }
   .hero__slot { aspect-ratio: 3 / 1; margin-top: 56px; }
   .sit { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-card); }
@@ -24,7 +25,7 @@
   @media (max-width: 640px) { br.d { display: none; } }
   @media (max-width: 900px) {
     .hero__top { grid-template-columns: 1fr; gap: 24px; }
-    .hero__aside { padding-top: 0; }
+    .hero__aside { padding-top: 0; } .hero__aside .small { margin-top: 0; }
     .hero__slot { aspect-ratio: 16 / 9; margin-top: 40px; }
     .sit { grid-template-columns: 1fr 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
@@ -82,7 +83,7 @@
         <a class="btn btn--primary" href="#contact">Записаться на звонок</a>
         <a class="btn btn--secondary" href="#start">Как открыть дело</a>
       </div>
-      <p class="small">Звонок 20 минут, бесплатно. В конце говорим, что делать дальше и кто из нас нужен, — или что мы не нужны.</p>
+      <p class="small">Звонок 20 минут, бесплатно: скажем, что делать дальше и кто из нас нужен.</p>
     </div>
   </div>
   <div class="slot hero__slot"><span class="slot__cap">картинка · команда или Флоренция · 3:1, на телефоне 16:9</span></div>
