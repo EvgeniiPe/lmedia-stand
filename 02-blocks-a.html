@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>LMedia DS — 02 Блоки 1–5</title>
+<link rel="stylesheet" href="ds.css">
+<style>
+  .hero { padding-top: 64px; padding-bottom: var(--section); }
+  .hero__top { display: grid; grid-template-columns: 1fr minmax(0, 520px); gap: 40px; align-items: start; }
+  .hero__aside { display: grid; gap: 20px; justify-items: start; padding-top: 44px; }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 8px; }
+  .hero__slot { aspect-ratio: 3 / 1; margin-top: 56px; }
+  .sit { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-card); }
+  .sit .card { display: flex; flex-direction: column; gap: 16px; }
+  .sit .step__t { margin-top: 0; text-wrap: balance; }
+  .sit .link { padding-top: 4px; margin-top: auto; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
+  .steps .step { border-top: 1px solid var(--line); padding-top: 20px; }
+  .steps .step--end { display: grid; gap: 16px; align-content: start; justify-items: start; }
+  .steps .step--end .step__t { margin-top: 0; }
+  @media (min-width: 641px) { br.m { display: none; } }
+  @media (max-width: 640px) { br.d { display: none; } }
+  @media (max-width: 900px) {
+    .hero__top { grid-template-columns: 1fr; gap: 24px; }
+    .hero__aside { padding-top: 0; }
+    .hero__slot { aspect-ratio: 16 / 9; margin-top: 40px; }
+    .sit { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .hero { padding-top: 32px; }
+    .sit { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1 · Header -->
+<header class="hdr"><div class="wrap hdr__in">
+  <a class="logo" href="#">LMedia</a>
+  <nav class="nav">
+    <a href="#services">Услуги</a><a href="#start">Открыть дело</a><a href="03-blocks-b.html#how">Как работаем</a><a href="03-blocks-b.html#team">Команда</a><a href="03-blocks-b.html#faq">Вопросы</a>
+  </nav>
+  <div class="hdr__end">
+    <div class="lang"><b>RU</b><span>EN</span><span>IT</span></div>
+    <a class="btn btn--secondary btn--menu" href="#">Меню</a>
+    <a class="btn btn--primary btn--pill" href="03-blocks-b.html#contact"><span class="btn__long">Записаться на звонок</span><span class="btn__short">Звонок</span></a>
+  </div>
+</div></header>
+
+<main>
+<!-- 2 · Hero -->
+<section class="hero wrap">
+  <div class="hero__top">
+    <div>
+      <span class="tag">Флоренция · RU · EN · IT</span>
+      <h1 class="display">Право, налоги<br class="d"> и продвижение —<br class="d"> одной командой</h1>
+    </div>
+    <div class="hero__aside">
+      <p class="lead">Для тех, кто открывает или ведёт дело в Италии. Бухгалтер (commercialista), адвокат и маркетолог во Флоренции — объясняем на русском, английском и итальянском.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="03-blocks-b.html#contact">Записаться на звонок</a>
+        <a class="btn btn--secondary" href="#start">С чего начать</a>
+      </div>
+      <p class="small">Звонок 20 минут, бесплатно. На выходе — план: что делать и кто из нас нужен.</p>
+    </div>
+  </div>
+  <div class="slot hero__slot"><span class="slot__cap">картинка · команда или Флоренция · 3:1, на телефоне 16:9</span></div>
+</section>
+
+<!-- 3 · Client situations -->
+<section class="section wrap">
+  <div class="sec-head">
+    <div><span class="tag">С чем приходят</span><h2 class="h2">Узнаёте<br> свою ситуацию?</h2></div>
+    <div class="sec-head__aside"><p class="lead">Шесть задач, с которыми к нам приходят чаще всего. Под каждой — куда смотреть дальше.</p></div>
+  </div>
+  <div class="panel">
+    <div class="sit">
+      <div class="card"><span class="step__n">01</span><p class="step__t">Хотите открыть дело в Италии и не понимаете, с чего начать: partita IVA, фирма, разрешения.</p><a class="link" href="#start">Путь по шагам</a></div>
+      <div class="card"><span class="step__n">02</span><p class="step__t">Partita IVA уже есть, а декларации, взносы и сроки — всё ещё загадка.</p><a class="link" href="#services">Бухгалтерия и налоги</a></div>
+      <div class="card"><span class="step__n">03</span><p class="step__t">Нужно подписать договор аренды, поставки или с партнёром — и понять его по-настоящему.</p><a class="link" href="#services">Юридическое сопровождение</a></div>
+      <div class="card"><span class="step__n">04</span><p class="step__t">Бухгалтер, юрист и маркетолог у вас разные и не знают друг о друге.</p><a class="link" href="03-blocks-b.html#how">Как мы работаем вместе</a></div>
+      <div class="card"><span class="step__n">05</span><p class="step__t">Дело открыто, а клиенты о вас не знают: нет сайта на итальянском, нет вас в поиске.</p><a class="link" href="#services">Маркетинг и коммуникация</a></div>
+      <div class="card"><span class="step__n">06</span><p class="step__t">Пришло письмо из налоговой (Agenzia delle Entrate) или INPS, и непонятно, что оно значит.</p><a class="link" href="03-blocks-b.html#contact">Приложите его к заявке</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Services -->
+<section class="section wrap" id="services">
+  <div class="sec-head">
+    <div><span class="tag">Услуги</span><h2 class="h2">Три направления —<br> одно дело</h2></div>
+    <div class="sec-head__aside">
+      <p class="lead">Берём ровно то, что нужно сейчас. Остальное подключаем, когда понадобится, — без смены подрядчика.</p>
+      <a class="btn btn--primary" href="03-blocks-b.html#contact">Записаться на звонок</a>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="svc-rows">
+      <div class="card svc-row">
+        <div class="slot"><span class="slot__cap">картинка · ≈1:1, на телефоне 16:9</span></div>
+        <div class="svc-row__main">
+          <h3 class="h3">Юридическое сопровождение</h3>
+          <p class="body">Договоры, регистрация и споры — с адвокатом, который объясняет на вашем языке.</p>
+          <ul class="rows">
+        <li><span class="ico" aria-hidden="true"></span><span>Что позволяет ваш статус пребывания — проверка до старта</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Форма бизнеса и регистрация: ИП <i>(ditta individuale)</i>, ООО <i>(SRL)</i> или упрощённое ООО <i>(SRLS)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Договоры с клиентами, поставщиками, партнёрами</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Аренда помещения и уведомление об открытии <i>(SCIA)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Претензии и споры</span></li>
+      </ul>
+        </div>
+      </div>
+      <div class="card svc-row">
+        <div class="slot"><span class="slot__cap">картинка · ≈1:1, на телефоне 16:9</span></div>
+        <div class="svc-row__main">
+          <h3 class="h3">Бухгалтерия и налоги</h3>
+          <p class="body">Partita IVA, режим, учёт и платежи — по календарю, а не из письма налоговой.</p>
+          <ul class="rows">
+        <li><span class="ico" aria-hidden="true"></span><span>Открытие partita IVA <i>(налоговый номер для работы)</i> и кода деятельности ATECO</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Упрощённый режим forfettario или обычный — расчёт на ваших цифрах</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Учёт и электронные счета <i>(fattura elettronica)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Декларации, НДС и платежи по F24 <i>(единая платёжка налогов)</i></span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Ответы на запросы налоговой и INPS <i>(соцстрах)</i></span></li>
+      </ul>
+        </div>
+      </div>
+      <div class="card svc-row">
+        <div class="slot"><span class="slot__cap">картинка · ≈1:1, на телефоне 16:9</span></div>
+        <div class="svc-row__main">
+          <h3 class="h3">Маркетинг и коммуникация</h3>
+          <p class="body">Бренд, сайт и пресса на итальянском — чтобы вас находили и понимали местные клиенты.</p>
+          <ul class="rows">
+        <li><span class="ico" aria-hidden="true"></span><span>Позиционирование: что сказать и кому</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Название, бренд и тексты на итальянском</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Сайт, который находят в Google</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Пресса, отзывы, карточка в Google Maps</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Проверка «эко»-обещаний в рекламе <i>(с 27.09.2026 в ЕС их нужно подтверждать)</i></span></li>
+      </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Start a business in Italy -->
+<section class="section wrap" id="start">
+  <div class="sec-head">
+    <div><span class="tag">Открыть дело</span><h2 class="h2">Как открыть дело<br> в Италии — по шагам</h2></div>
+    <div class="sec-head__aside"><p class="lead">Путь от идеи до первого выставленного счёта. Под каждым шагом — кто из нас его ведёт.</p></div>
+  </div>
+  <ol class="steps">
+    <li class="step"><div class="step__n">01</div><div class="step__t">Право на работу</div><p class="step__d">Проверяем, что позволяет ваш статус пребывания.</p><span class="tag">Адвокат</span></li>
+    <li class="step"><div class="step__n">02</div><div class="step__t">Codice fiscale</div><p class="step__d">Налоговый номер — первый документ для всего остального.</p><span class="tag">Бухгалтер</span></li>
+    <li class="step"><div class="step__n">03</div><div class="step__t">Partita IVA или фирма</div><p class="step__d">Сравниваем налоги и обязанности на ваших цифрах.</p><span class="tag">Бухгалтер + адвокат</span></li>
+    <li class="step"><div class="step__n">04</div><div class="step__t">Регистрация</div><p class="step__d">Налоговая, INPS, торговая палата — только то, что нужно именно вам.</p><span class="tag">Бухгалтер</span></li>
+    <li class="step"><div class="step__n">05</div><div class="step__t">Помещение и разрешения</div><p class="step__d">Договор аренды и уведомление об открытии (SCIA).</p><span class="tag">Адвокат</span></li>
+    <li class="step"><div class="step__n">06</div><div class="step__t">Банк и счета</div><p class="step__d">Расчётный счёт и электронные счета клиентам.</p><span class="tag">Бухгалтер</span></li>
+    <li class="step"><div class="step__n">07</div><div class="step__t">Первые клиенты</div><p class="step__d">Название, сайт на итальянском, карточка в Google.</p><span class="tag">Маркетолог</span></li>
+    <li class="step step--end"><div class="step__t">Не хотите проходить это одни? Ведём весь путь целиком.</div><a class="btn btn--primary" href="03-blocks-b.html#contact">Записаться на звонок</a></li>
+  </ol>
+</section>
+</main>
+
+</body>
+</html>

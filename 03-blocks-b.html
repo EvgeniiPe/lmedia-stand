@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>LMedia DS — 03 Блоки 6–11</title>
+<link rel="stylesheet" href="ds.css">
+<style>
+  .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-card); }
+  .why .card { display: grid; align-content: start; }
+  .how { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 24px; }
+  .how .step { border-top: 1px solid var(--line); padding-top: 20px; }
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-card); }
+  .team .slot { aspect-ratio: 4 / 3; }
+  .team { grid-template-rows: repeat(4, auto) 1fr; }
+  .team .card { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+  .team .card__tags { align-self: end; }
+  .form { display: grid; gap: 20px; }
+  .field__hint { font-size: 12px; color: var(--meta); font-weight: 400; margin-left: 8px; }
+  .addr { display: grid; gap: 4px; }
+  @media (max-width: 900px) {
+    .why, .team { grid-template-columns: 1fr; }
+    .how { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) { .how { grid-template-columns: 1fr; gap: 24px; } }
+</style>
+</head>
+<body>
+
+<header class="hdr"><div class="wrap hdr__in">
+  <a class="logo" href="02-blocks-a.html">LMedia</a>
+  <nav class="nav">
+    <a href="02-blocks-a.html#services">Услуги</a><a href="02-blocks-a.html#start">Открыть дело</a><a href="#how">Как работаем</a><a href="#team">Команда</a><a href="#faq">Вопросы</a>
+  </nav>
+  <div class="hdr__end">
+    <div class="lang"><b>RU</b><span>EN</span><span>IT</span></div>
+    <a class="btn btn--secondary btn--menu" href="#">Меню</a>
+    <a class="btn btn--primary btn--pill" href="#contact"><span class="btn__long">Записаться на звонок</span><span class="btn__short">Звонок</span></a>
+  </div>
+</div></header>
+
+<main style="padding-top:64px">
+
+<!-- 6 · Why one team -->
+<section class="section wrap">
+  <div class="sec-head">
+    <div><span class="tag">Почему одна команда</span><h2 class="h2">Одно окно вместо<br> трёх подрядчиков</h2></div>
+    <div class="sec-head__aside"><p class="lead">Когда бухгалтер, юрист и маркетолог работают вместе, вам не нужно пересказывать одно и то же трижды.</p></div>
+  </div>
+  <div class="panel">
+    <div class="why">
+      <div class="card"><span class="ico ico--card" aria-hidden="true"></span><h3 class="h3">Одна история</h3><p class="body">Бухгалтер знает, что написано в договоре, а маркетолог — какой у вас налоговый режим.</p></div>
+      <div class="card"><span class="ico ico--card" aria-hidden="true"></span><h3 class="h3">Один язык</h3><p class="body">Объясняем по-русски или по-английски, документы готовим по-итальянски.</p></div>
+      <div class="card"><span class="ico ico--card" aria-hidden="true"></span><h3 class="h3">Один контакт</h3><p class="body">Вы пишете одному человеку — <span class="ph">[Имя основного контакта]</span>. Он отвечает сам и подключает остальных.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · How we work -->
+<section class="section wrap" id="how">
+  <div class="sec-head">
+    <div><span class="tag">Как работаем</span><h2 class="h2">От первого звонка<br> до ведения</h2></div>
+    <div class="sec-head__aside"><p class="lead">Ничего не начинаем без письменного предложения и вашего «да».</p></div>
+  </div>
+  <ol class="how">
+    <li class="step"><div class="step__n">01</div><div class="step__t">Звонок, 20 минут</div><p class="step__d">Бесплатно. Вы рассказываете о деле, мы задаём вопросы. На выходе — понятно, нужны ли мы вам.</p></li>
+    <li class="step"><div class="step__n">02</div><div class="step__t">Письменное предложение</div><p class="step__d">Что делаем, кто из нас, сроки и цена — в течение <span class="ph">[N]</span> рабочих дней после звонка.</p></li>
+    <li class="step"><div class="step__n">03</div><div class="step__t">Старт</div><p class="step__d">Список нужных от вас документов — один раз и полностью. Начинаем в течение <span class="ph">[N]</span> дней после вашего «да».</p></li>
+    <li class="step"><div class="step__n">04</div><div class="step__t">Ведение</div><p class="step__d">Календарь платежей и задач, напоминания заранее, один контакт для всех вопросов. Помесячно, пока вы с нами.</p></li>
+  </ol>
+</section>
+
+<!-- 8 · Team -->
+<section class="section wrap" id="team">
+  <div class="sec-head">
+    <div><span class="tag">Команда</span><h2 class="h2">Три профессии,<br> одно дело</h2></div>
+    <div class="sec-head__aside"><p class="lead">Небольшая команда во Флоренции. У бухгалтера и адвоката — номера в профессиональных реестрах, их можно проверить. <span class="ph">[1 фраза о команде]</span></p></div>
+  </div>
+  <div class="panel">
+    <div class="team">
+      <div class="card">
+        <div class="slot"><span class="slot__cap">портрет · 4:3</span></div>
+        <h3 class="h3"><span class="ph">[Имя Фамилия]</span></h3>
+        <p class="body">Бухгалтер (dottore commercialista) — учёт и налоги</p>
+        <dl class="facts"><div><dt>Реестр</dt><dd class="ph">[ODCEC Firenze, №]</dd></div><div><dt>Языки</dt><dd class="ph">[…]</dd></div></dl>
+        <div class="card__tags"><span class="tag">Основной контакт <span class="ph">[подтвердить]</span></span></div>
+      </div>
+      <div class="card">
+        <div class="slot"><span class="slot__cap">портрет · 4:3</span></div>
+        <h3 class="h3"><span class="ph">[Имя Фамилия]</span></h3>
+        <p class="body">Адвокат (avvocato) — договоры, регистрация, споры</p>
+        <dl class="facts"><div><dt>Реестр</dt><dd class="ph">[Ordine degli Avvocati di Firenze, №]</dd></div><div><dt>Языки</dt><dd class="ph">[…]</dd></div></dl>
+      </div>
+      <div class="card">
+        <div class="slot"><span class="slot__cap">портрет · 4:3</span></div>
+        <h3 class="h3"><span class="ph">[Имя Фамилия]</span></h3>
+        <p class="body">Маркетолог — бренд, сайт, пресса</p>
+        <dl class="facts"><div><dt>Реестр</dt><dd>не требуется</dd></div><div><dt>Языки</dt><dd class="ph">[…]</dd></div></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · FAQ -->
+<section class="section wrap" id="faq">
+  <div class="side">
+    <div class="side__col">
+      <span class="tag">Вопросы</span>
+      <h2 class="h2">Частые<br> вопросы</h2>
+      <p class="lead">То, что спрашивают до первого звонка.</p>
+      <a class="btn btn--secondary" href="#contact">Задать свой</a>
+    </div>
+    <div>
+      <div class="acc acc--open"><div class="acc__q">Первый звонок платный?<span class="acc__t" aria-hidden="true"></span></div><p class="acc__a">Нет. 20 минут бесплатно и без обязательств: понимаем задачу и говорим, нужны ли мы вам.</p></div>
+      <div class="acc"><div class="acc__q">Вы работаете только во Флоренции?<span class="acc__t" aria-hidden="true"></span></div></div>
+      <div class="acc"><div class="acc__q">На каком языке будут документы?<span class="acc__t" aria-hidden="true"></span></div></div>
+      <div class="acc"><div class="acc__q">Сколько стоит работа?<span class="acc__t" aria-hidden="true"></span></div></div>
+      <div class="acc"><div class="acc__q">Можно начать только с одного направления?<span class="acc__t" aria-hidden="true"></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Contact -->
+<section class="section wrap" id="contact">
+  <div class="panel panel--pad">
+    <div class="side">
+      <div class="side__col">
+        <span class="tag">Контакты</span>
+        <h2 class="h2">Расскажите<br> о своём деле</h2>
+        <p class="lead">Звонок 20 минут по телефону или видеосвязи — бесплатно и без обязательств.</p>
+        <ol class="next">
+          <li><b>01</b><span>Пишете здесь или сразу выбираете время звонка.</span></li>
+          <li><b>02</b><span>Отвечаем в течение <span class="ph">[N]</span> рабочих дней и предлагаем время, если вы его не выбрали.</span></li>
+          <li><b>03</b><span>На звонке понимаем задачу; после — письменное предложение.</span></li>
+        </ol>
+        <a class="btn btn--secondary" href="#">Выбрать время в календаре</a>
+        <div class="addr">
+          <span class="small addr__l"><span class="ico ico--s" aria-hidden="true"></span><span class="ph">[адрес, Firenze]</span></span>
+          <span class="small addr__l"><span class="ico ico--s" aria-hidden="true"></span><span class="ph">[телефон]</span></span>
+          <span class="small addr__l"><span class="ico ico--s" aria-hidden="true"></span><span class="ph">[email]</span></span>
+          <span class="small addr__l"><span class="ico ico--s" aria-hidden="true"></span><span class="ph">[Telegram / WhatsApp]</span></span>
+        </div>
+      </div>
+      <div class="card">
+        <form class="form" onsubmit="return false">
+          <div class="field"><label class="field__label" for="n">Имя *</label><input class="input" id="n" placeholder="Как к вам обращаться"></div>
+          <div class="field"><label class="field__label" for="e">Email *</label><input class="input" id="e" type="email" placeholder="you@example.com"></div>
+          <div class="field"><span class="field__label">Что нужно <span class="field__hint">можно несколько, необязательно</span></span>
+            <div class="chips"><span class="chip">Юридическое</span><span class="chip">Бухгалтерия и налоги</span><span class="chip">Маркетинг</span><span class="chip">Открыть дело целиком</span><span class="chip">Пока не знаю</span></div>
+          </div>
+          <div class="field"><label class="field__label" for="m">Опишите задачу *</label><textarea class="textarea" id="m" placeholder="Чем занимаетесь и что нужно сделать"></textarea></div>
+          <div class="field"><span class="field__label">Файл <span class="field__hint">необязательно</span></span><div class="file"><span class="btn btn--secondary"><span class="ico ico--s" aria-hidden="true"></span>Прикрепить файл</span><span class="caption">например, письмо из налоговой · PDF, JPG, PNG, до <span class="ph">[N]</span> МБ</span></div></div>
+          <label class="check"><span class="check__box"></span><span>Я прочитал(а) <u>политику конфиденциальности</u> и согласен(на) на обработку данных для ответа на запрос. *</span></label>
+          <div class="form__foot">
+            <button class="btn btn--primary" type="submit">Отправить</button>
+            <span class="small">* — обязательные поля. Без рассылок.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- 11 · Footer -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid">
+      <div class="ftr__col ftr__col--brand">
+        <span class="logo">LMedia</span>
+        <p class="body" style="max-width:360px">Юридическое, бухгалтерское и маркетинговое сопровождение бизнеса в Италии. Флоренция.</p>
+        <span class="small">Работаем на русском, английском и итальянском.</span>
+      </div>
+      <div class="ftr__col">
+        <span class="ftr__h">Услуги</span>
+        <a href="02-blocks-a.html#services">Юридическое сопровождение</a>
+        <a href="02-blocks-a.html#services">Бухгалтерия и налоги</a>
+        <a href="02-blocks-a.html#services">Маркетинг и коммуникация</a>
+        <a href="02-blocks-a.html#start">Открыть дело в Италии</a>
+      </div>
+      <div class="ftr__col">
+        <span class="ftr__h">Связь</span>
+        <span class="ph">[адрес, Firenze]</span>
+        <span class="ph">[email]</span>
+        <span class="ph">[телефон]</span>
+        <span class="ph">[Telegram / WhatsApp]</span>
+      </div>
+    </div>
+    <div class="ftr__legal">
+      <span><span class="ph">[Название и форма юрлица]</span> · P.IVA <span class="ph">[номер]</span> · REA <span class="ph">[FI-…]</span> · Sede legale <span class="ph">[адрес]</span></span>
+      <span>Политика конфиденциальности · Cookie</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
