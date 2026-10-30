@@ -216,14 +216,13 @@ a { color: inherit; text-decoration: none; }
 .rows li { padding: 12px 0; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.5; color: var(--text); }
 .rows li i { font-style: normal; color: var(--meta); }
 /* Услуги (блок 4, вариант А′): карточка на направление во всю панель; слева картинка 400 во всю высоту карточки, вплотную к краям; справа заголовок, текст, список */
-.svc-rows { display: grid; gap: var(--gap-card); }
-.svc-row { display: grid; grid-template-columns: 400px 1fr; padding: 0; overflow: hidden; }
-.svc-row > .slot:first-child { margin: 0; border-radius: 0; min-height: 100%; }
-.svc-row__main { padding: 40px; }
-.svc-row__main .rows { margin-top: 24px; }
-.svc-row .rows li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; }
-@media (max-width: 900px) { .svc-row { grid-template-columns: 1fr; } .svc-row > .slot:first-child { aspect-ratio: 16 / 9; } }
-@media (max-width: 640px) { .svc-row__main { padding: var(--pad-card); } }
+/* Карточки услуг (блок 4): три в ряд; картинка 4:3, заголовок, текст, 5 строк списка, остаток — каждая строка общая для трёх карточек, пункты списков стоят друг напротив друга. Строк списка в карточке — 5. */
+.svc-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-card); grid-template-rows: repeat(8, auto) 1fr; }
+.svc-card { display: grid; grid-row: span 9; grid-template-rows: subgrid; row-gap: 0; }
+.svc-card > .slot:first-child { aspect-ratio: 4 / 3; }
+.svc-card .rows { margin-top: 24px; display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+.svc-card .rows li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: center; }
+@media (max-width: 900px) { .svc-cols { grid-template-columns: 1fr; grid-template-rows: none; } .svc-card { grid-row: auto; grid-template-rows: none; display: block; } .svc-card .rows { grid-row: auto; grid-template-rows: none; } }
 /* Заглушки иконок, пока не выбран набор: 20 — строки списков услуг, 32 — над заголовком карточки, 16 — контакты и кнопка файла */
 .ico { display: block; flex: none; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--faint); }
 .ico--card { width: 32px; height: 32px; margin-bottom: 20px; }
