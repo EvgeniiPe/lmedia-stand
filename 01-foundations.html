@@ -128,7 +128,7 @@
       <div class="ts"><div class="caption"><b>h2 · 500</b>56 → 34 · 1.14 · −1,5%</div><div class="h2">Как мы работаем</div></div>
       <div class="ts"><div class="caption"><b>h3 · 500</b>24 → 20 · 1.25 · −1%</div><div class="h3">Бухгалтерия и налоги</div></div>
       <div class="ts"><div class="caption"><b>title · 500</b>18 · 1.35 · 0 · шаги, ситуации, вопросы</div><div class="step__t" style="margin:0">Право на работу</div></div>
-      <div class="ts"><div class="caption"><b>lead · 400</b>18 → 17 · 1.5 · 0</div><div class="lead">Открываем дело, ведём бухгалтерию, готовим договоры.</div></div>
+      <div class="ts"><div class="caption"><b>lead · 400</b>18 → 17 · 1.5 · 0</div><div class="lead">Открываем бизнес, ведём бухгалтерию, готовим договоры.</div></div>
       <div class="ts"><div class="caption"><b>body · 400</b>16 · 1.5 · 0 · цвет --text</div><div class="body">Официальные документы — на итальянском. Объясняем и переписываемся на русском или английском.</div></div>
       <div class="ts"><div class="caption"><b>small · 400</b>14 · 1.5 · 0 · цвет --meta</div><div class="small">Отвечаем в течение двух рабочих дней.</div></div>
       <div class="ts"><div class="caption"><b>label · 500</b>13 · 1 · 0 · кнопки, подписи полей</div><div class="label" style="color:var(--ink)">Записаться на звонок</div></div>
@@ -200,7 +200,7 @@
   <h3 class="h3 sub" style="margin-top:0">Шапка секции · блоки 2–8</h3>
   <div class="sec-head" style="margin-bottom:0">
     <div><span class="tag">Тег</span><h2 class="h2">Заголовок<br> секции</h2></div>
-    <div class="sec-head__aside"><p class="lead">Лид 18 --text в правой колонке до 520. В hero под ним две кнопки и примечание; в остальных секциях — лид и не больше одной тёмной кнопки.</p><div class="cta-row"><span class="btn btn--primary">Записаться на звонок</span><span class="btn btn--secondary">Как открыть дело</span></div><p class="small">Примечание 14 --meta — только в hero.</p></div>
+    <div class="sec-head__aside"><p class="lead">Лид 18 --text в правой колонке до 520. В hero под ним две кнопки и примечание; в остальных секциях — лид и не больше одной тёмной кнопки.</p><div class="cta-row"><span class="btn btn--primary">Записаться на звонок</span><span class="btn btn--secondary">Как открыть бизнес</span></div><p class="small">Примечание 14 --meta — только в hero.</p></div>
   </div>
   <div class="spec"><span><b>Компьютер:</b> колонки 1fr и до 520, зазор 40; при 1440 правая колонка — от x 800 до 1320. Она опущена на 58, поэтому строчные буквы лида вровень со строчными буквами первой строки заголовка</span><span><b>Отступы:</b> тег → заголовок 20; в правой колонке всё через 20 — лид → кнопки → примечание; шапка → контент 48, в hero шапка → картинка 56</span><span><b>Hero, блок 2:</b> заголовок display; кнопки в ряд через 8 — тёмная, потом светлая; на 390 обе в одном ряду (316 из 350), не помещаются — перенос, ряды через 8</span><span><b>≤ 900:</b> одна колонка; заголовок → лид 20 (в hero 24); шапка → контент 32, в hero → картинка 40</span></div>
 
@@ -214,10 +214,10 @@
           <div><span class="btn btn--primary is-hover">Записаться</span><div class="caption">тёмная · наведение #27272a</div></div>
           <div><span class="btn btn--primary is-focus">Записаться</span><div class="caption">тёмная · фокус, обводка 2px --ink, отступ 2</div></div>
           <div><span class="btn btn--primary is-disabled">Записаться</span><div class="caption">тёмная · недоступна: --tag, текст --faint</div></div>
-          <div><span class="btn btn--secondary">Как открыть дело</span><div class="caption">светлая · обычная</div></div>
-          <div><span class="btn btn--secondary is-hover">Как открыть дело</span><div class="caption">светлая · наведение --panel</div></div>
-          <div><span class="btn btn--secondary is-focus">Как открыть дело</span><div class="caption">светлая · фокус</div></div>
-          <div><span class="btn btn--secondary is-disabled">Как открыть дело</span><div class="caption">светлая · недоступна</div></div>
+          <div><span class="btn btn--secondary">Как открыть бизнес</span><div class="caption">светлая · обычная</div></div>
+          <div><span class="btn btn--secondary is-hover">Как открыть бизнес</span><div class="caption">светлая · наведение --panel</div></div>
+          <div><span class="btn btn--secondary is-focus">Как открыть бизнес</span><div class="caption">светлая · фокус</div></div>
+          <div><span class="btn btn--secondary is-disabled">Как открыть бизнес</span><div class="caption">светлая · недоступна</div></div>
         </div>
         <div class="spec"><span><b>Обе:</b> высота 42 · поля 12/16 · радиус 14 · текст 13/500 · зазор до стрелки 8 · нажатие — сдвиг на 1px вниз</span><span><b>Тёмная:</b> --ink, белый текст, стрелка → текстом 13px; тень: inset 0 .5 0 rgba(255,255,255,.5), inset 0 9 14 −5 rgba(117,123,133,.4), кольцо 1.5 #2c2e34, 0 4 6 rgba(0,0,0,.14) — это токен тени --shadow-btn, его цвета не входят в палитру</span><span><b>Светлая:</b> белая, рамка 1px --line, текст --ink, без стрелки и тени; недоступна — --tag, текст --faint, без рамки</span><span><b>В шапке:</b> та же тёмная, радиус полный</span></div>
       </div>
@@ -237,7 +237,7 @@
         <div class="cname">Нажатие и переходы</div>
         <div class="states">
           <div><span class="btn btn--primary is-active">Записаться</span><div class="caption">тёмная · нажата: сдвиг на 1px вниз</div></div>
-          <div><span class="btn btn--secondary is-active">Как открыть дело</span><div class="caption">светлая · нажата: сдвиг на 1px вниз</div></div>
+          <div><span class="btn btn--secondary is-active">Как открыть бизнес</span><div class="caption">светлая · нажата: сдвиг на 1px вниз</div></div>
         </div>
         <div class="spec"><span><b>Переходы:</b> цвет, фон и рамка меняются за 120 мс (ease-out)</span><span><b>Аккордеон:</b> открывается сразу, без анимации высоты</span><span>Больше ничего не движется</span></div>
       </div>
@@ -263,8 +263,8 @@
         <div class="step-sep"></div>
         <div class="cname">Ситуация · блок 3</div>
         <div class="step__n">02</div>
-        <div class="step__t">Хотите открыть дело и не знаете, с чего начать</div>
-        <a class="link" href="#" style="display:inline-block;margin-top:20px">Как открыть дело</a>
+        <div class="step__t">Хотите открыть бизнес и не знаете, с чего начать</div>
+        <a class="link" href="#" style="display:inline-block;margin-top:20px">Как открыть бизнес</a>
         <p class="caption" style="margin-top:16px">Та же карточка 28 / 28: номер, заголовок, через 20 (не меньше) ссылка «куда дальше» — внизу карточки, в ряду ссылки на одной линии; тега нет.</p>
       </div>
       <div class="slots">
@@ -318,7 +318,7 @@
           <h3 class="h3">Маркетинг и коммуникация</h3>
           <p class="body">Бренд, сайт и пресса на итальянском, чтобы вас находили и понимали местные клиенты.</p>
           <ul class="rows">
-        <li><span class="ico" aria-hidden="true"></span><span>Позиционирование: что и кому сказать о вашем деле</span></li>
+        <li><span class="ico" aria-hidden="true"></span><span>Позиционирование: что и кому сказать о вашем бизнесе</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Название, бренд и тексты на итальянском</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Сайт на итальянском, который находят в Google</span></li>
         <li><span class="ico" aria-hidden="true"></span><span>Пресса, отзывы клиентов, карточка компании в Google Maps</span></li>
@@ -442,7 +442,7 @@
   <div class="panel">
     <div class="only-desk">
     <p class="caption demo-label">Шапка · компьютер — белая, прилипает к верху, 72; логотип 20/500 −3%; ссылки 14/400 --text по центру страницы, зазор 28; языки 13/500 (текущий --ink, другие --meta); тёмная кнопка с полным радиусом</p>
-    <div class="mini"><div class="mini-hdr"><span class="logo">LMedia</span><nav class="nav"><a>Услуги</a><a>Открыть дело</a><a>Как работаем</a><a>Команда</a><a>Вопросы</a></nav><div class="hdr__end"><div class="lang"><b>RU</b><span>EN</span><span>IT</span></div><span class="btn btn--primary btn--pill">Записаться на звонок</span></div></div></div>
+    <div class="mini"><div class="mini-hdr"><span class="logo">LMedia</span><nav class="nav"><a>Услуги</a><a>Открыть бизнес</a><a>Как работаем</a><a>Команда</a><a>Вопросы</a></nav><div class="hdr__end"><div class="lang"><b>RU</b><span>EN</span><span>IT</span></div><span class="btn btn--primary btn--pill">Записаться на звонок</span></div></div></div>
     </div>
     <p class="caption demo-label only-mob">Шапка для компьютера (≥ 901) — в версии стенда шириной 1440</p>
     <div class="hdr-demo">
@@ -455,7 +455,7 @@
       </div>
       <div>
         <p class="caption demo-label">Меню открыто · телефон</p>
-        <div class="mini mini-mob"><div class="mini-hdr" style="padding:0 20px"><span class="logo">LMedia</span><div style="display:flex;gap:8px"><span class="btn btn--secondary" style="padding:12px 14px">Закрыть</span><span class="btn btn--primary btn--pill" style="padding:12px 14px">Звонок</span></div></div><div class="mini-menu"><span>Услуги</span><span>Открыть дело</span><span>Как работаем</span><span>Команда</span><span>Вопросы</span><div class="lang" style="margin-top:6px"><b>RU</b><span>EN</span><span>IT</span></div></div></div>
+        <div class="mini mini-mob"><div class="mini-hdr" style="padding:0 20px"><span class="logo">LMedia</span><div style="display:flex;gap:8px"><span class="btn btn--secondary" style="padding:12px 14px">Закрыть</span><span class="btn btn--primary btn--pill" style="padding:12px 14px">Звонок</span></div></div><div class="mini-menu"><span>Услуги</span><span>Открыть бизнес</span><span>Как работаем</span><span>Команда</span><span>Вопросы</span><div class="lang" style="margin-top:6px"><b>RU</b><span>EN</span><span>IT</span></div></div></div>
       </div>
     </div>
     <div class="card" style="margin-top:var(--gap-card)"><div class="cname">Подвал · блок 11 — внизу этой страницы</div><div class="spec" style="margin-top:0;border-top:0;padding-top:0"><span><b>Место:</b> последний элемент страницы, на всю ширину окна, --panel, верхние углы 36, отступ сверху 64, содержимое в контейнере 1200</span><span><b>Колонки:</b> 1.4 : 1 : 1, зазор 40 (≤ 900 — одна колонка, зазор 40); заголовки 13/500 --ink, ссылки 14/400 --text через 10</span><span><b>Первая колонка:</b> логотип 20/500 → через 16 описание 16/24 --text, до 360 → через 16 примечание 14 --meta</span><span><b>Юридическая строка:</b> 12 --meta, через 56 после колонок, над ней линия 1px --line и 20 до текста</span></div></div>
@@ -477,7 +477,7 @@
         <a href="02-blocks-a.html#services">Юридическое сопровождение</a>
         <a href="02-blocks-a.html#services">Бухгалтерия и налоги</a>
         <a href="02-blocks-a.html#services">Маркетинг и коммуникация</a>
-        <a href="02-blocks-a.html#start">Открыть дело в Италии</a>
+        <a href="02-blocks-a.html#start">Открыть бизнес в Италии</a>
       </div>
       <div class="ftr__col">
         <span class="ftr__h">Связь</span>
