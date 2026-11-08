@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>LMedia DS — 01 Основы и компоненты</title>
-<link rel="stylesheet" href="ds.css?v=ac0364242d">
+<link rel="stylesheet" href="ds.css?v=2b25d232de">
+<link rel="preload" href="fonts/prata-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
   .sw { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--gap-card); }
   .sw > div { border-radius: var(--r-card); min-height: 148px; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; }
@@ -91,12 +92,12 @@
 <section class="section wrap" id="color">
   <div class="sec-head">
     <div><span class="tag">Цвет</span><h2 class="h2">Почти без цвета</h2></div>
-    <div class="sec-head__aside"><p class="lead">Десять серых и один акцент. Нет чистого чёрного и других оттенков.</p></div>
+    <div class="sec-head__aside"><p class="lead">Десять серых, вино для кнопки и один акцент. Нет чистого чёрного и других оттенков.</p></div>
   </div>
   <div class="panel">
     <div class="sw">
-      <div class="on-dark" style="background:#09090b"><div class="sw__n">--ink</div><div class="sw__v">#09090b · заголовки, тёмная кнопка</div></div>
-      <div class="on-dark" style="background:#27272a"><div class="sw__n">--text-2</div><div class="sw__v">#27272a · лид на панели, наведение</div></div>
+      <div class="on-dark" style="background:#09090b"><div class="sw__n">--ink</div><div class="sw__v">#09090b · заголовки</div></div>
+      <div class="on-dark" style="background:#27272a"><div class="sw__n">--text-2</div><div class="sw__v">#27272a · лид на панели</div></div>
       <div class="on-dark" style="background:#3f3f46"><div class="sw__n">--text</div><div class="sw__v">#3f3f46 · основной текст, ответы</div></div>
       <div class="on-dark" style="background:#71717a"><div class="sw__n">--meta</div><div class="sw__v">#71717a · подписи, номера шагов</div></div>
       <div style="background:#a1a1aa"><div class="sw__n">--faint</div><div class="sw__v">#a1a1aa · плейсхолдер, недоступно</div></div>
@@ -106,11 +107,18 @@
       <div style="background:#f4f4f5"><div class="sw__n">--panel</div><div class="sw__v">#f4f4f5 · фон этой панели</div></div>
       <div style="background:#ffffff"><div class="sw__n">--card</div><div class="sw__v">#ffffff · фон страницы, карточки</div></div>
     </div>
+    <div class="accent" style="margin-bottom:var(--gap-card)">
+      <div class="accent__c" style="background:#5e1d19"></div>
+      <div class="accent__t">
+        <span class="sw__n" style="padding:0;margin:0">--wine · #5e1d19</span>
+        <p class="body">Главная кнопка и кружок открытого вопроса. Текст на ней #fef6ee (11,79), наведение #723935. Не текст и не фон блока.</p>
+      </div>
+    </div>
     <div class="accent">
       <div class="accent__c"></div>
       <div class="accent__t">
         <span class="sw__n" style="padding:0;margin:0">--ember · #ff5a00</span>
-        <p class="body">Единственный цвет — #ff5a00. Одна декоративная метка на экран: точка 6px или бейдж. Не текст, не фон блока, не кнопка. Точка у ошибки формы — служебная и в лимит не входит.</p>
+        <p class="body">Акцент — #ff5a00. Одна декоративная метка на экран: точка 6px или бейдж. Не текст, не фон блока, не кнопка. Точка у ошибки формы — служебная и в лимит не входит.</p>
       </div>
     </div>
   </div>
@@ -119,15 +127,15 @@
 <!-- type -->
 <section class="section wrap" id="type">
   <div class="sec-head">
-    <div><span class="tag">Шрифт</span><h2 class="h2">Manrope, 400 и 500</h2></div>
-    <div class="sec-head__aside"><p class="lead">Жирного нет. Крупное держится размером и плотным трекингом. Где нет стрелки — размер на телефоне тот же; интерлиньяж и трекинг на телефоне не меняются.</p></div>
+    <div><span class="tag">Шрифт</span><h2 class="h2">Prata и Manrope</h2></div>
+    <div class="sec-head__aside"><p class="lead">Заголовки — Prata 400, текст — Manrope 400 и 500. Жирного нет. Крупное держится размером и плотным трекингом. Где нет стрелки — размер на телефоне тот же; интерлиньяж и трекинг на телефоне не меняются.</p></div>
   </div>
   <div class="panel panel--pad">
     <div class="card">
-      <div class="ts"><div class="caption"><b>display · 500</b>68 → 40 · интерлиньяж 1.02 · трекинг −3%</div><div class="display">Одна команда</div></div>
-      <div class="ts"><div class="caption"><b>h2 · 500</b>56 → 34 · 1.14 · −1,5%</div><div class="h2">Частые вопросы</div></div>
-      <div class="ts"><div class="caption"><b>h3 · 500</b>24 → 20 · 1.25 · −1%</div><div class="h3">Бухгалтерия и налоги</div></div>
-      <div class="ts"><div class="caption"><b>title · 500</b>18 · 1.35 · 0 · шаги, ситуации, вопросы</div><div class="step__t" style="margin:0">Право на работу</div></div>
+      <div class="ts"><div class="caption"><b>display · Prata 400</b>68 → 40 · интерлиньяж 1.02 · трекинг −3%</div><div class="display">Одна команда</div></div>
+      <div class="ts"><div class="caption"><b>h2 · Prata 400</b>56 → 34 · 1.14 · −3%</div><div class="h2">Частые вопросы</div></div>
+      <div class="ts"><div class="caption"><b>h3 · Prata 400</b>24 → 20 · 1.25 · −1%</div><div class="h3">Бухгалтерия и налоги</div></div>
+      <div class="ts"><div class="caption"><b>title · Prata 400</b>20 → 18 · 1.35 · 0 · шаги, ситуации, вопросы</div><div class="step__t" style="margin:0">Право на работу</div></div>
       <div class="ts"><div class="caption"><b>lead · 400</b>18 → 17 · 1.5 · 0</div><div class="lead">Открываем бизнес, ведём бухгалтерию, готовим договоры.</div></div>
       <div class="ts"><div class="caption"><b>body · 400</b>16 · 1.5 · 0 · цвет --text</div><div class="body">Официальные документы — на итальянском. Объясняем и переписываемся на русском или английском.</div></div>
       <div class="ts"><div class="caption"><b>small · 400</b>14 · 1.5 · 0 · цвет --meta</div><div class="small">Отвечаем в течение двух рабочих дней.</div></div>
@@ -202,7 +210,7 @@
     <div><span class="tag">Тег</span><h2 class="h2">Заголовок<br> секции</h2></div>
     <div class="sec-head__aside"><p class="lead">Лид 18 --text в правой колонке до 520. В hero под ним две кнопки и примечание; в остальных секциях — лид и не больше одной тёмной кнопки.</p><div class="cta-row"><span class="btn btn--primary">Записаться на звонок</span><span class="btn btn--secondary">Как открыть бизнес</span></div><p class="small">Примечание 14 --meta — только в hero.</p></div>
   </div>
-  <div class="spec"><span><b>Компьютер:</b> колонки 1fr и до 520, зазор 40; при 1440 правая колонка — от x 800 до 1320. Она опущена на 58, поэтому строчные буквы лида вровень со строчными буквами первой строки заголовка</span><span><b>Отступы:</b> тег → заголовок 20; в правой колонке всё через 20 — лид → кнопки → примечание; шапка → контент 48, в hero шапка → картинка 56</span><span><b>Hero, блок 2:</b> заголовок display; кнопки в ряд через 8 — тёмная, потом светлая; на 390 обе в одном ряду (316 из 350), не помещаются — перенос, ряды через 8</span><span><b>≤ 900:</b> одна колонка; заголовок → лид 20 (в hero 24); шапка → контент 32, в hero → картинка 40</span></div>
+  <div class="spec"><span><b>Компьютер:</b> колонки 1fr и до 520, зазор 40; при 1440 правая колонка — от x 800 до 1320. Она опущена на 54, поэтому строчные буквы лида вровень со строчными буквами первой строки заголовка</span><span><b>Отступы:</b> тег → заголовок 20; в правой колонке всё через 20 — лид → кнопки → примечание; шапка → контент 48, в hero шапка → картинка 56</span><span><b>Hero, блок 2:</b> заголовок display; кнопки в ряд через 8 — тёмная, потом светлая; на 390 обе в одном ряду (316 из 350), не помещаются — перенос, ряды через 8</span><span><b>≤ 900:</b> одна колонка; заголовок → лид 20 (в hero 24); шапка → контент 32, в hero → картинка 40</span></div>
 
   <h3 class="h3 sub">Действия</h3>
   <div class="panel">
@@ -211,7 +219,7 @@
         <div class="cname">Кнопки</div>
         <div class="states">
           <div><span class="btn btn--primary">Записаться</span><div class="caption">тёмная · обычная</div></div>
-          <div><span class="btn btn--primary is-hover">Записаться</span><div class="caption">тёмная · наведение #27272a</div></div>
+          <div><span class="btn btn--primary is-hover">Записаться</span><div class="caption">тёмная · наведение #723935</div></div>
           <div><span class="btn btn--primary is-focus">Записаться</span><div class="caption">тёмная · фокус, обводка 2px --ink, отступ 2</div></div>
           <div><span class="btn btn--primary is-disabled">Записаться</span><div class="caption">тёмная · недоступна: --tag, текст --faint</div></div>
           <div><span class="btn btn--secondary">Как открыть бизнес</span><div class="caption">светлая · обычная</div></div>
@@ -219,7 +227,7 @@
           <div><span class="btn btn--secondary is-focus">Как открыть бизнес</span><div class="caption">светлая · фокус</div></div>
           <div><span class="btn btn--secondary is-disabled">Как открыть бизнес</span><div class="caption">светлая · недоступна</div></div>
         </div>
-        <div class="spec"><span><b>Обе:</b> высота 42 · поля 12/16 · радиус 14 · текст 13/500 · зазор до стрелки 8 · нажатие — сдвиг на 1px вниз</span><span><b>Тёмная:</b> --ink, белый текст, стрелка → текстом 13px; тень: inset 0 .5 0 rgba(255,255,255,.5), inset 0 9 14 −5 rgba(117,123,133,.4), кольцо 1.5 #2c2e34, 0 4 6 rgba(0,0,0,.14) — это токен тени --shadow-btn, его цвета не входят в палитру</span><span><b>Светлая:</b> белая, рамка 1px --line, текст --ink, без стрелки и тени; недоступна — --tag, текст --faint, без рамки</span><span><b>В шапке:</b> та же тёмная, радиус полный</span></div>
+        <div class="spec"><span><b>Обе:</b> высота 42 · поля 12/16 · радиус 14 · текст 13/500 · зазор до стрелки 8 · нажатие — сдвиг на 1px вниз</span><span><b>Тёмная:</b> --wine, текст --on-wine, стрелка → текстом 13px; тень: inset 0 .5 0 rgba(255,255,255,.5), inset 0 9 14 −5 rgba(169,135,133,.4), кольцо 1.5 #77403c, 0 4 6 rgba(0,0,0,.14) — это токен тени --shadow-btn, его цвета не входят в палитру</span><span><b>Светлая:</b> белая, рамка 1px --line, текст --ink, без стрелки и тени; недоступна — --tag, текст --faint, без рамки</span><span><b>В шапке:</b> та же тёмная, радиус полный</span></div>
       </div>
       <div class="col2">
       <div class="card">
@@ -362,7 +370,7 @@
     <li class="step"><div class="step__n">01</div><div class="step__t">Право на работу</div><p class="step__d">Номер, заголовок, текст.</p><span class="tag">Адвокат</span></li>
     <li class="step"><div class="step__n">02</div><div class="step__t">Codice fiscale</div><p class="step__d">Тег — кто ведёт шаг.</p><span class="tag">Бухгалтер</span></li>
     <li class="step"><div class="step__n">03</div><div class="step__t">Регистрация</div><p class="step__d">Тег через 14 после текста.</p><span class="tag">Бухгалтер</span></li>
-    <li class="step step--end"><div class="step__t">Последняя клетка ряда: заголовок 18/500 и одна тёмная кнопка через 16, без номера.</div><span class="btn btn--primary">Записаться на звонок</span></li>
+    <li class="step step--end"><div class="step__t">Последняя клетка ряда: заголовок Prata 20/400 и одна тёмная кнопка через 16, без номера.</div><span class="btn btn--primary">Записаться на звонок</span></li>
   </ol>
 
   <h3 class="h3 sub">Форма</h3>
