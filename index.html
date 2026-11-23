@@ -60,6 +60,96 @@
     .sit { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: 24px; }
   }
+/* svc-street:begin */
+/* Блок 4 «Что мы ведём»: три дома линией (кит: линия, серый, плоско) + значки Lucide к пунктам. Генератор —
+   proofs/services-street/gen.py --site; руками не править. Исключения Motion и цвета — design-system.md (владелец 06.11).
+   Вид Д «языком семи шагов» (владелец 07.11, проба variant-unify-h.html): контур --faint 1 px, стёкла --slot со скруглением
+   3 px, табличка — оранжевая плашка с белым текстом; двери --tag, детали и занавески, земля 1 px, небо белое — как были. */
+.slot--street { background: var(--card); overflow: clip; }
+.street { display: block; width: 100%; height: 100%; font-family: var(--font); }
+.street .o { fill: none; stroke: var(--faint); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.street .d { fill: none; stroke: var(--meta); stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.street .f { fill: var(--card); }
+.street .t, .street .o.t { fill: var(--tag); }
+.street .o.glass { fill: var(--slot); }                 /* после .o.t: та же сила, побеждает порядок; свет при наведении сильнее */
+.street rect.glass { rx: 3px; }
+.street .o.plq { fill: var(--ember); stroke: var(--ember); rx: 6px; }
+.street text { fill: var(--ink); font-weight: 500; letter-spacing: .02em; }
+.street .plq-t { fill: #fff; }
+.ico--l { border: 0; border-radius: 0; fill: none; stroke: var(--text); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.street .scene { transform-box: view-box; transform-origin: 50% 92%; transition: transform .3s cubic-bezier(.23, 1, .32, 1); }
+.street .leaf { transform-box: fill-box; transition: transform .3s cubic-bezier(.23, 1, .32, 1); }
+.street .leaf--l { transform-origin: 0 50%; } .street .leaf--r { transform-origin: 100% 50%; }
+.street .inside { fill: var(--text); transition: fill .3s ease-out; }
+.street .glass { transition: fill .3s ease-out; }
+.svc-card .rows li > * { transition: transform .2s cubic-bezier(.23, 1, .32, 1); }
+.street .x-van.pre { transform: translateX(-170px); }
+.street .x-van.go { animation: van-in 1.4s cubic-bezier(.23, 1, .32, 1) both; }
+@keyframes van-in { from { transform: translateX(-170px); } to { transform: none; } }
+@media (hover: hover) and (pointer: fine) {
+  .svc-card:hover .street .glass { fill: var(--ember-soft); transition-delay: calc(var(--i, 0) * 40ms); }
+  .svc-card:hover .street .inside { fill: var(--ember-soft); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .svc-card:hover .street .scene { transform: scale(1.03); }
+  .svc-card:hover .street .leaf { transform: scaleX(.85); }
+  .svc-card .rows li:hover > * { transform: translateX(4px); }
+}
+/* svc-street:end */
+/* Шапка секции без лида (блок 3; владелец 08.11: лид убрать, заголовок в одну строку) — одна колонна,
+   иначе пустая правая колонна 520 ужимает заголовок до 384 и на 901–1190 он ломается на две строки. */
+.sec-head--solo { grid-template-columns: 1fr; }
+/* sit-objects:begin */
+/* Блок 3 «С чем к нам приходят»: в углу каждой карточки — линейный предмет «с чем приходят» (кит: линия, серый, плоско).
+   Генератор — proofs/situations-objects/gen.py --site; руками не править. Размер и место подбирает скрипт блока: самый
+   большой предмет с зазором 16 px до строк и стрелки (у 06 — 24), 12 px от правого края; не влез при высоте 72 — без рисунка.
+   Без JS — только от 1280 px (дальше карточки не меняют ширину). Движение при наведении — исключение Motion в design-system.md (владелец 07.11). */
+.sit .card { position: relative; overflow: clip; }
+.sit .card > :not(.sit-art) { position: relative; z-index: 1; }
+.sit-art { position: absolute; right: 12px; bottom: -8px; width: 80px; height: 112px; overflow: visible; pointer-events: none; font-family: var(--font); }
+.sit:not(.fit) .sit-art { display: none; }
+@media (min-width: 1280px) { .sit:not(.fit) .sit-art { display: block; } }   /* ниже без подгонки наезжает на текст (замер 07.11: 1101–1200 → 0 px) */
+.sit-art[hidden] { display: none !important; }
+/* Вид Д «языком семи шагов» (владелец 07.11, проба variant-unify-h.html): контур --faint 1 px, строки — полоски --line 3 px
+   (заголовки выдачи --slot 3.5), одна оранжевая плашка с белым текстом на предмет — исключение цвета в design-system.md. */
+.sit-art .o { fill: none; stroke: var(--faint); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sit-art .d { fill: none; stroke: var(--meta); stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.sit-art .f { fill: var(--card); } .sit-art .t { fill: var(--tag); }
+.sit-art .perf { fill: none; stroke: var(--meta); stroke-width: 1; stroke-dasharray: 1.4 1.4; vector-effect: non-scaling-stroke; }
+.sit-art text { fill: var(--ink); font-weight: 500; stroke: none; }
+.sit-art text.m { fill: var(--meta); }
+.sit-art .txt { stroke: var(--line); stroke-width: 3; }          /* правила ниже — после .o/.d/.f/.t: та же сила, побеждает порядок */
+.sit-art .txt2 { stroke: var(--slot); stroke-width: 3.5; }
+.sit-art .plq { fill: var(--ember); stroke: var(--ember); }
+.sit-art .plq-t { fill: #fff; }
+.sit-art .on-plq { stroke: #fff; }
+.sit-art .x-bollo .perf { stroke: var(--ember); }
+.sit-art .act, .sit-art .vcard { transform-box: fill-box; transition: transform .3s cubic-bezier(.23, 1, .32, 1) var(--d, 0ms); }
+.sit-art .act-swing { transform-box: view-box; transform-origin: var(--o); }
+.sit-art .vcard { transform-origin: center; transform: rotate(var(--r)); transition-delay: calc(var(--i) * 40ms); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .sit .card:hover .act-l { transform: translateX(-3px); }
+  .sit .card:hover .act-r { transform: translateX(3px); }
+  .sit .card:hover .act-swing { transform: rotate(3deg); }
+  .sit .card:hover .act-pen { transform: translate(4px, -2px); }
+  .sit .card:hover .vcard { transform: translateX(var(--dx)) rotate(0deg); }
+  .sit .card:hover .act-lens { transform: translate(-8px, -6px); }
+  .sit .card:hover .act-letter { transform: translateY(-8px); }
+}
+/* sit-objects:end */
+/* hero-city:begin */
+/* Блок 1: город языком домов блока 4 (владелец 07.11; проба variant-hero-d.html). Генератор — proofs/hero-d/gen.py --site;
+   руками не править. Тела белые, обводка --faint 1 px; белая подложка по силуэту прежней картинки (маска), чтобы отсеянные
+   стены не открывали буквы LMEDIA; оранжевое — исключение цвета в design-system.md (Hero art). */
+.city { aspect-ratio: 2288 / 639; height: auto; overflow: hidden; }
+.city .bk { fill: var(--card); }
+.city path { fill: var(--card); stroke: var(--faint); stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.city path.ln { fill: var(--faint); stroke-width: .5; }
+.city path.x { fill: var(--faint); }
+.city path.lit { fill: var(--ember-soft); }
+.city .acc .pl { fill: var(--ember); }
+.city .acc text { fill: #fff; font-family: var(--font); font-weight: 500; letter-spacing: .02em; }
+/* hero-city:end */
 /* ci-steps:begin */
 /* Блок 5 «Семь шагов»: картинки шагов (владелец 01.11). Источник — ~/card-illustrations: React-компоненты скила
    → статичная разметка (export.sh). Правила картинок ограничены .ci-art; цвета — токены ds.css. */
@@ -436,96 +526,6 @@
   }
 .ci-art svg { display: block; }
 /* ci-steps:end */
-/* svc-street:begin */
-/* Блок 4 «Что мы ведём»: три дома линией (кит: линия, серый, плоско) + значки Lucide к пунктам. Генератор —
-   proofs/services-street/gen.py --site; руками не править. Исключения Motion и цвета — design-system.md (владелец 06.11).
-   Вид Д «языком семи шагов» (владелец 07.11, проба variant-unify-h.html): контур --faint 1 px, стёкла --slot со скруглением
-   3 px, табличка — оранжевая плашка с белым текстом; двери --tag, детали и занавески, земля 1 px, небо белое — как были. */
-.slot--street { background: var(--card); overflow: clip; }
-.street { display: block; width: 100%; height: 100%; font-family: var(--font); }
-.street .o { fill: none; stroke: var(--faint); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.street .d { fill: none; stroke: var(--meta); stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.street .f { fill: var(--card); }
-.street .t, .street .o.t { fill: var(--tag); }
-.street .o.glass { fill: var(--slot); }                 /* после .o.t: та же сила, побеждает порядок; свет при наведении сильнее */
-.street rect.glass { rx: 3px; }
-.street .o.plq { fill: var(--ember); stroke: var(--ember); rx: 6px; }
-.street text { fill: var(--ink); font-weight: 500; letter-spacing: .02em; }
-.street .plq-t { fill: #fff; }
-.ico--l { border: 0; border-radius: 0; fill: none; stroke: var(--text); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.street .scene { transform-box: view-box; transform-origin: 50% 92%; transition: transform .3s cubic-bezier(.23, 1, .32, 1); }
-.street .leaf { transform-box: fill-box; transition: transform .3s cubic-bezier(.23, 1, .32, 1); }
-.street .leaf--l { transform-origin: 0 50%; } .street .leaf--r { transform-origin: 100% 50%; }
-.street .inside { fill: var(--text); transition: fill .3s ease-out; }
-.street .glass { transition: fill .3s ease-out; }
-.svc-card .rows li > * { transition: transform .2s cubic-bezier(.23, 1, .32, 1); }
-.street .x-van.pre { transform: translateX(-170px); }
-.street .x-van.go { animation: van-in 1.4s cubic-bezier(.23, 1, .32, 1) both; }
-@keyframes van-in { from { transform: translateX(-170px); } to { transform: none; } }
-@media (hover: hover) and (pointer: fine) {
-  .svc-card:hover .street .glass { fill: var(--ember-soft); transition-delay: calc(var(--i, 0) * 40ms); }
-  .svc-card:hover .street .inside { fill: var(--ember-soft); }
-}
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .svc-card:hover .street .scene { transform: scale(1.03); }
-  .svc-card:hover .street .leaf { transform: scaleX(.85); }
-  .svc-card .rows li:hover > * { transform: translateX(4px); }
-}
-/* svc-street:end */
-/* Шапка секции без лида (блок 3; владелец 08.11: лид убрать, заголовок в одну строку) — одна колонна,
-   иначе пустая правая колонна 520 ужимает заголовок до 384 и на 901–1190 он ломается на две строки. */
-.sec-head--solo { grid-template-columns: 1fr; }
-/* sit-objects:begin */
-/* Блок 3 «С чем к нам приходят»: в углу каждой карточки — линейный предмет «с чем приходят» (кит: линия, серый, плоско).
-   Генератор — proofs/situations-objects/gen.py --site; руками не править. Размер и место подбирает скрипт блока: самый
-   большой предмет с зазором 16 px до строк и стрелки (у 06 — 24), 12 px от правого края; не влез при высоте 72 — без рисунка.
-   Без JS — только от 1280 px (дальше карточки не меняют ширину). Движение при наведении — исключение Motion в design-system.md (владелец 07.11). */
-.sit .card { position: relative; overflow: clip; }
-.sit .card > :not(.sit-art) { position: relative; z-index: 1; }
-.sit-art { position: absolute; right: 12px; bottom: -8px; width: 80px; height: 112px; overflow: visible; pointer-events: none; font-family: var(--font); }
-.sit:not(.fit) .sit-art { display: none; }
-@media (min-width: 1280px) { .sit:not(.fit) .sit-art { display: block; } }   /* ниже без подгонки наезжает на текст (замер 07.11: 1101–1200 → 0 px) */
-.sit-art[hidden] { display: none !important; }
-/* Вид Д «языком семи шагов» (владелец 07.11, проба variant-unify-h.html): контур --faint 1 px, строки — полоски --line 3 px
-   (заголовки выдачи --slot 3.5), одна оранжевая плашка с белым текстом на предмет — исключение цвета в design-system.md. */
-.sit-art .o { fill: none; stroke: var(--faint); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.sit-art .d { fill: none; stroke: var(--meta); stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.sit-art .f { fill: var(--card); } .sit-art .t { fill: var(--tag); }
-.sit-art .perf { fill: none; stroke: var(--meta); stroke-width: 1; stroke-dasharray: 1.4 1.4; vector-effect: non-scaling-stroke; }
-.sit-art text { fill: var(--ink); font-weight: 500; stroke: none; }
-.sit-art text.m { fill: var(--meta); }
-.sit-art .txt { stroke: var(--line); stroke-width: 3; }          /* правила ниже — после .o/.d/.f/.t: та же сила, побеждает порядок */
-.sit-art .txt2 { stroke: var(--slot); stroke-width: 3.5; }
-.sit-art .plq { fill: var(--ember); stroke: var(--ember); }
-.sit-art .plq-t { fill: #fff; }
-.sit-art .on-plq { stroke: #fff; }
-.sit-art .x-bollo .perf { stroke: var(--ember); }
-.sit-art .act, .sit-art .vcard { transform-box: fill-box; transition: transform .3s cubic-bezier(.23, 1, .32, 1) var(--d, 0ms); }
-.sit-art .act-swing { transform-box: view-box; transform-origin: var(--o); }
-.sit-art .vcard { transform-origin: center; transform: rotate(var(--r)); transition-delay: calc(var(--i) * 40ms); }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .sit .card:hover .act-l { transform: translateX(-3px); }
-  .sit .card:hover .act-r { transform: translateX(3px); }
-  .sit .card:hover .act-swing { transform: rotate(3deg); }
-  .sit .card:hover .act-pen { transform: translate(4px, -2px); }
-  .sit .card:hover .vcard { transform: translateX(var(--dx)) rotate(0deg); }
-  .sit .card:hover .act-lens { transform: translate(-8px, -6px); }
-  .sit .card:hover .act-letter { transform: translateY(-8px); }
-}
-/* sit-objects:end */
-/* hero-city:begin */
-/* Блок 1: город языком домов блока 4 (владелец 07.11; проба variant-hero-d.html). Генератор — proofs/hero-d/gen.py --site;
-   руками не править. Тела белые, обводка --faint 1 px; белая подложка по силуэту прежней картинки (маска), чтобы отсеянные
-   стены не открывали буквы LMEDIA; оранжевое — исключение цвета в design-system.md (Hero art). */
-.city { aspect-ratio: 2288 / 639; height: auto; overflow: hidden; }
-.city .bk { fill: var(--card); }
-.city path { fill: var(--card); stroke: var(--faint); stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.city path.ln { fill: var(--faint); stroke-width: .5; }
-.city path.x { fill: var(--faint); }
-.city path.lit { fill: var(--ember-soft); }
-.city .acc .pl { fill: var(--ember); }
-.city .acc text { fill: #fff; font-family: var(--font); font-weight: 500; letter-spacing: .02em; }
-/* hero-city:end */
   .sub { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-card); }
   .sub .card { display: flex; flex-direction: column; align-items: flex-start; }
   .sub .card > .body { margin-bottom: 24px; }
@@ -1680,7 +1680,7 @@
   </div>
   <ol class="steps">
     <li class="step"><div class="ci-zone" aria-hidden="true" data-dur="2.2"><div class="ci-stage ci-art" style="width:250px;height:160px"><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:8},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:0,&quot;dur&quot;:0.4,&quot;ease&quot;:[0.23,1,0.32,1]}" class="overflow-hidden rounded-[10px] border border-(--ci-line) bg-(--ci-card)" style="position:absolute;left:10px;top:20px;width:98px;height:120px;opacity:1;transform:none"><div class="text-[8.5px] font-medium leading-[1.2] text-(--ci-muted)" style="position:absolute;left:8px;top:8px">Permesso<br/>di soggiorno</div><div class="overflow-hidden rounded-[4px] bg-(--ci-zone)" style="position:absolute;left:8px;top:36px;width:30px;height:36px"><svg viewBox="0 0 24 24" class="absolute bottom-[-3px] left-[3px] h-[28px] w-[24px] text-(--ci-slot-2)" fill="currentColor"><circle cx="12" cy="8.5" r="4"></circle><path d="M4 21c.8-4.4 4-6.5 8-6.5s7.2 2.1 8 6.5z"></path></svg></div><div class="rounded-full" style="position:absolute;left:45px;top:42px;width:40px;height:5px;background:var(--ci-slot-2)"></div><div class="rounded-full" style="position:absolute;left:45px;top:52px;width:30px;height:5px;background:var(--ci-slot)"></div><div class="rounded-full" style="position:absolute;left:8px;top:84px;width:78px;height:5px;background:var(--ci-slot)"></div><div class="rounded-full" style="position:absolute;left:8px;top:94px;width:60px;height:5px;background:var(--ci-slot)"></div><div class="rounded-full" style="position:absolute;left:8px;top:104px;width:70px;height:5px;background:var(--ci-slot)"></div><div data-b="{&quot;from&quot;:{&quot;y&quot;:0,&quot;opacity&quot;:0},&quot;to&quot;:{&quot;y&quot;:[0,0,112,112],&quot;opacity&quot;:[0,1,1,0]},&quot;at&quot;:0.2,&quot;dur&quot;:1.4,&quot;ease&quot;:&quot;linear&quot;,&quot;times&quot;:[0,0.1,0.9,1]}" class="bg-(--ci-accent)" style="position:absolute;left:0;top:2px;width:96px;height:2px;opacity:0;transform:translateY(112px)"></div></div><div><div class="rounded-[5px] border-[1.5px] border-(--ci-slot-2) bg-(--ci-card)" style="position:absolute;left:120px;top:30px;width:18px;height:18px"></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:0.6},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;scale&quot;:1},&quot;at&quot;:0.55,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="flex items-center justify-center rounded-[5px] bg-(--ci-ink) text-(--ci-bg)" style="position:absolute;left:120px;top:30px;width:18px;height:18px;opacity:1;transform:none"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M3.5 8.5l3 3 6-6.5"></path></svg></div><div class="whitespace-nowrap text-[11px] leading-[12px] text-(--ci-text)" style="position:absolute;left:146px;top:33px">Тип документа</div></div><div><div class="rounded-[5px] border-[1.5px] border-(--ci-slot-2) bg-(--ci-card)" style="position:absolute;left:120px;top:66px;width:18px;height:18px"></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:0.6},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;scale&quot;:1},&quot;at&quot;:1.05,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="flex items-center justify-center rounded-[5px] bg-(--ci-ink) text-(--ci-bg)" style="position:absolute;left:120px;top:66px;width:18px;height:18px;opacity:1;transform:none"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M3.5 8.5l3 3 6-6.5"></path></svg></div><div class="whitespace-nowrap text-[11px] leading-[12px] text-(--ci-text)" style="position:absolute;left:146px;top:69px">Срок действия</div></div><div><div class="rounded-[5px] border-[1.5px] border-(--ci-slot-2) bg-(--ci-card)" style="position:absolute;left:120px;top:102px;width:18px;height:18px"></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:0.6},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;scale&quot;:1},&quot;at&quot;:1.55,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="flex items-center justify-center rounded-[5px] bg-(--ci-accent) text-(--ci-on-accent)" style="position:absolute;left:120px;top:102px;width:18px;height:18px;opacity:1;transform:none"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M3.5 8.5l3 3 6-6.5"></path></svg></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:1},&quot;to&quot;:{&quot;opacity&quot;:0},&quot;at&quot;:1.55,&quot;dur&quot;:0.2,&quot;ease&quot;:[0.23,1,0.32,1]}" class="whitespace-nowrap text-[11px] leading-[12px] text-(--ci-muted)" style="position:absolute;left:146px;top:105px;opacity:0">Можно работать</div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;to&quot;:{&quot;opacity&quot;:1},&quot;at&quot;:1.55,&quot;dur&quot;:0.25,&quot;ease&quot;:[0.23,1,0.32,1]}" class="whitespace-nowrap text-[11px] font-medium leading-[12px] text-(--ci-ink)" style="position:absolute;left:146px;top:105px;opacity:1">Можно работать</div></div></div></div><div class="step__n">01</div><div class="step__t">Право на работу</div><p class="step__d">Проверяем, что позволяет ваш статус пребывания.</p><span class="tag">Адвокат</span></li>
-    <li class="step"><div class="ci-zone" aria-hidden="true" data-dur="2.4"><div class="ci-stage ci-art" style="width:250px;height:160px"><div class="" style="position:absolute;left:25px;top:20px;width:200px;height:120px;perspective:700px"><div data-b="{&quot;from&quot;:{&quot;rotateY&quot;:0},&quot;to&quot;:{&quot;rotateY&quot;:90},&quot;at&quot;:0.3,&quot;dur&quot;:0.32,&quot;ease&quot;:[0.5,0,0.75,0]}" class="overflow-hidden rounded-[10px] border border-(--ci-line) bg-(--ci-card)" style="position:absolute;left:0;top:0;width:200px;height:120px;transform:rotateY(90deg)"><div class="bg-(--ci-ink) opacity-85" style="position:absolute;left:0;top:16px;width:198px;height:22px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:18px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:23.8px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:29.6px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:35.4px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:41.2px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:47px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:52.8px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:58.6px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:64.4px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:70.19999999999999px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:76px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:81.8px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:87.6px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:93.39999999999999px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:99.2px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:105px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:110.8px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:116.6px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:122.39999999999999px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:128.2px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:134px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:139.8px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:145.6px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:151.4px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:157.2px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:163px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:168.79999999999998px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:174.6px;top:56px;width:2.4px;height:34px"></div></div><div data-b="{&quot;from&quot;:{&quot;rotateY&quot;:-90},&quot;to&quot;:{&quot;rotateY&quot;:0},&quot;at&quot;:0.62,&quot;dur&quot;:0.38,&quot;ease&quot;:[0.23,1,0.32,1]}" class="overflow-hidden rounded-[10px] border border-(--ci-line) bg-(--ci-card)" style="position:absolute;left:0;top:0;width:200px;height:120px;transform:none"><div class="text-[8.5px] font-medium tracking-[0.12em] text-(--ci-muted)" style="position:absolute;left:12px;top:11px">CODICE FISCALE</div><div class="text-[8px] text-(--ci-faint)" style="position:absolute;left:12px;top:29px">Cognome</div><div class="text-[11px] font-medium text-(--ci-ink)" style="position:absolute;left:12px;top:39px">ROSSI</div><div class="text-[8px] text-(--ci-faint)" style="position:absolute;left:104px;top:29px">Nome</div><div class="text-[11px] font-medium text-(--ci-ink)" style="position:absolute;left:104px;top:39px">MARIA</div><div class="flex items-center justify-between rounded-[8px] bg-(--ci-zone) px-[10px] text-[13px] font-medium tabular-nums text-(--ci-ink)" style="position:absolute;left:10px;top:68px;width:178px;height:34px"><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.05,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">R</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.095,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">S</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.1400000000000001,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">S</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.185,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">M</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.23,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">R</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.275,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">A</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.32,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">8</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.365,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">5</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.4100000000000001,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">T</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.455,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">1</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.5,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">0</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.545,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">A</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.59,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">5</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.635,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">6</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.6800000000000002,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">2</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.725,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">S</span></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;to&quot;:{&quot;opacity&quot;:1},&quot;at&quot;:1.9,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="rounded-[8px] border-2 border-(--ci-accent)" style="position:absolute;left:10px;top:68px;width:178px;height:34px;opacity:1"></div></div></div></div></div><div class="step__n">02</div><div class="step__t">Codice fiscale</div><p class="step__d">Личный налоговый код, как ИНН. Без него не получить partita IVA и не открыть счёт в банке.</p><span class="tag">Бухгалтер</span></li>
+    <li class="step"><div class="ci-zone" aria-hidden="true" data-dur="2.4"><div class="ci-stage ci-art" style="width:250px;height:160px"><div class="" style="position:absolute;left:25px;top:20px;width:200px;height:120px;perspective:700px"><div data-b="{&quot;from&quot;:{&quot;rotateY&quot;:0},&quot;to&quot;:{&quot;rotateY&quot;:90},&quot;at&quot;:0.3,&quot;dur&quot;:0.32,&quot;ease&quot;:[0.5,0,0.75,0],&quot;rewind&quot;:true}" class="overflow-hidden rounded-[10px] border border-(--ci-line) bg-(--ci-card)" style="position:absolute;left:0;top:0;width:200px;height:120px;transform:rotateY(90deg)"><div class="bg-(--ci-ink) opacity-85" style="position:absolute;left:0;top:16px;width:198px;height:22px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:18px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:23.8px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:29.6px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:35.4px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:41.2px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:47px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:52.8px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:58.6px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:64.4px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:70.19999999999999px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:76px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:81.8px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:87.6px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:93.39999999999999px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:99.2px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:105px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:110.8px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:116.6px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:122.39999999999999px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:128.2px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:134px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:139.8px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:145.6px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:151.4px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:157.2px;top:56px;width:2.4px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:163px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:168.79999999999998px;top:56px;width:1.2px;height:34px"></div><div class="bg-(--ci-ink)" style="position:absolute;left:174.6px;top:56px;width:2.4px;height:34px"></div></div><div data-b="{&quot;from&quot;:{&quot;rotateY&quot;:-90},&quot;to&quot;:{&quot;rotateY&quot;:0},&quot;at&quot;:0.62,&quot;dur&quot;:0.38,&quot;ease&quot;:[0.23,1,0.32,1],&quot;rewind&quot;:true}" class="overflow-hidden rounded-[10px] border border-(--ci-line) bg-(--ci-card)" style="position:absolute;left:0;top:0;width:200px;height:120px;transform:none"><div class="text-[8.5px] font-medium tracking-[0.12em] text-(--ci-muted)" style="position:absolute;left:12px;top:11px">CODICE FISCALE</div><div class="text-[8px] text-(--ci-faint)" style="position:absolute;left:12px;top:29px">Cognome</div><div class="text-[11px] font-medium text-(--ci-ink)" style="position:absolute;left:12px;top:39px">ROSSI</div><div class="text-[8px] text-(--ci-faint)" style="position:absolute;left:104px;top:29px">Nome</div><div class="text-[11px] font-medium text-(--ci-ink)" style="position:absolute;left:104px;top:39px">MARIA</div><div class="flex items-center justify-between rounded-[8px] bg-(--ci-zone) px-[10px] text-[13px] font-medium tabular-nums text-(--ci-ink)" style="position:absolute;left:10px;top:68px;width:178px;height:34px"><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.05,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">R</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.095,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">S</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.1400000000000001,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">S</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.185,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">M</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.23,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">R</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.275,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">A</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.32,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">8</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.365,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">5</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.4100000000000001,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">T</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.455,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">1</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.5,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">0</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.545,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">A</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.59,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">5</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.635,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">6</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.6800000000000002,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">2</span><span data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;y&quot;:3},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;y&quot;:0},&quot;at&quot;:1.725,&quot;dur&quot;:0.14,&quot;ease&quot;:[0.23,1,0.32,1]}" style="display:inline-block;opacity:1;transform:none">S</span></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;to&quot;:{&quot;opacity&quot;:1},&quot;at&quot;:1.9,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="rounded-[8px] border-2 border-(--ci-accent)" style="position:absolute;left:10px;top:68px;width:178px;height:34px;opacity:1"></div></div></div></div></div><div class="step__n">02</div><div class="step__t">Codice fiscale</div><p class="step__d">Личный налоговый код, как ИНН. Без него не получить partita IVA и не открыть счёт в банке.</p><span class="tag">Бухгалтер</span></li>
     <li class="step"><div class="ci-zone" aria-hidden="true" data-dur="2.3"><div class="ci-stage ci-art" style="width:250px;height:160px"><div class="bg-(--ci-slot-2)" style="position:absolute;left:124px;top:40px;width:2px;height:92px"></div><div class="rounded-full bg-(--ci-slot-2)" style="position:absolute;left:95px;top:130px;width:60px;height:6px"></div><div data-b="{&quot;from&quot;:{&quot;rotate&quot;:0},&quot;to&quot;:{&quot;rotate&quot;:[0,-9,7,5]},&quot;at&quot;:0.1,&quot;dur&quot;:2,&quot;ease&quot;:&quot;easeInOut&quot;,&quot;times&quot;:[0,0.35,0.7,1]}" class="rounded-full bg-(--ci-ink)" style="position:absolute;left:35px;top:38px;width:180px;height:3px;transform:rotate(5deg)"></div><div class="rounded-full border-2 border-(--ci-card) bg-(--ci-accent)" style="position:absolute;left:120px;top:34.5px;width:10px;height:10px"></div><div data-b="{&quot;from&quot;:{&quot;y&quot;:0},&quot;to&quot;:{&quot;y&quot;:[0,14,-11,-8]},&quot;at&quot;:0.1,&quot;dur&quot;:2,&quot;ease&quot;:&quot;easeInOut&quot;,&quot;times&quot;:[0,0.35,0.7,1]}" style="position:absolute;left:9px;top:40px;width:52px;height:70px;transform:translateY(-8px)"><div class="bg-(--ci-slot-2)" style="position:absolute;left:25px;top:0;width:1.5px;height:30px"></div><div class="rounded-full border border-(--ci-card) bg-(--ci-faint)" style="position:absolute;left:12px;top:25px;width:28px;height:4.5px"></div><div class="rounded-full border border-(--ci-card) bg-(--ci-faint)" style="position:absolute;left:12px;top:20px;width:28px;height:4.5px"></div><div class="rounded-full bg-(--ci-text)" style="position:absolute;left:0;top:30px;width:52px;height:6px"></div><div class="flex items-center justify-center rounded-full border border-(--ci-line) bg-(--ci-card) text-[10px] font-medium text-(--ci-ink)" style="position:absolute;left:4px;top:44px;width:44px;height:20px">ИП</div></div><div data-b="{&quot;from&quot;:{&quot;y&quot;:0},&quot;to&quot;:{&quot;y&quot;:[0,-14,11,8]},&quot;at&quot;:0.1,&quot;dur&quot;:2,&quot;ease&quot;:&quot;easeInOut&quot;,&quot;times&quot;:[0,0.35,0.7,1]}" style="position:absolute;left:189px;top:40px;width:52px;height:70px;transform:translateY(8px)"><div class="bg-(--ci-slot-2)" style="position:absolute;left:25px;top:0;width:1.5px;height:30px"></div><div class="rounded-full border border-(--ci-card) bg-(--ci-faint)" style="position:absolute;left:12px;top:25px;width:28px;height:4.5px"></div><div class="rounded-full border border-(--ci-card) bg-(--ci-faint)" style="position:absolute;left:12px;top:20px;width:28px;height:4.5px"></div><div class="rounded-full border border-(--ci-card) bg-(--ci-faint)" style="position:absolute;left:12px;top:15px;width:28px;height:4.5px"></div><div class="rounded-full bg-(--ci-text)" style="position:absolute;left:0;top:30px;width:52px;height:6px"></div><div class="flex items-center justify-center rounded-full border border-(--ci-line) bg-(--ci-card) text-[10px] font-medium text-(--ci-ink)" style="position:absolute;left:4px;top:44px;width:44px;height:20px">Фирма</div></div></div></div><div class="step__n">03</div><div class="step__t">ИП или фирма</div><p class="step__d">Сравниваем налоги и обязанности на ваших цифрах.</p><span class="tag">Бухгалтер + адвокат</span></li>
     <li class="step"><div class="ci-zone" aria-hidden="true" data-dur="2.1"><div class="ci-stage ci-art" style="width:250px;height:160px"><div data-b="{&quot;from&quot;:{&quot;y&quot;:0},&quot;to&quot;:{&quot;y&quot;:[0,2,0,0,2,0]},&quot;at&quot;:0.52,&quot;dur&quot;:0.7,&quot;ease&quot;:&quot;easeOut&quot;,&quot;times&quot;:[0,0.1,0.25,0.77,0.87,1]}" class="rounded-[10px] border border-(--ci-line) bg-(--ci-card)" style="position:absolute;left:14px;top:12px;width:124px;height:136px;transform:none"><div class="text-[9.5px] font-medium text-(--ci-ink)" style="position:absolute;left:10px;top:10px">Registrazione</div><div class="rounded-full" style="position:absolute;left:10px;top:30px;width:100px;height:5px;background:var(--ci-slot)"></div><div class="rounded-full" style="position:absolute;left:10px;top:40px;width:90px;height:5px;background:var(--ci-slot)"></div><div class="rounded-full" style="position:absolute;left:10px;top:50px;width:104px;height:5px;background:var(--ci-slot)"></div><div class="rounded-full" style="position:absolute;left:10px;top:60px;width:70px;height:5px;background:var(--ci-slot)"></div></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:1.5,&quot;rotate&quot;:-18},&quot;to&quot;:{&quot;opacity&quot;:0.92,&quot;scale&quot;:1,&quot;rotate&quot;:-8},&quot;at&quot;:0.3,&quot;dur&quot;:0.26,&quot;ease&quot;:[0.3,1.3,0.6,1]}" class="flex flex-col items-center justify-center rounded-full border-[2.5px] border-(--ci-accent) text-center text-[7.5px] font-medium uppercase leading-[1.15] tracking-[0.04em] text-(--ci-ink)" style="position:absolute;left:24px;top:78px;width:54px;height:54px;opacity:0.92;transform:rotate(-8deg)"><span>Agenzia</span><span>Entrate</span></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:1.5,&quot;rotate&quot;:-4},&quot;to&quot;:{&quot;opacity&quot;:0.92,&quot;scale&quot;:1,&quot;rotate&quot;:6},&quot;at&quot;:0.85,&quot;dur&quot;:0.26,&quot;ease&quot;:[0.3,1.3,0.6,1]}" class="flex flex-col items-center justify-center rounded-full border-[2.5px] border-(--ci-accent) text-center text-[7.5px] font-medium uppercase leading-[1.15] tracking-[0.04em] text-(--ci-ink)" style="position:absolute;left:80px;top:74px;width:54px;height:54px;opacity:0.92;transform:rotate(6deg)"><span class="text-[10px]">INPS</span></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0},&quot;to&quot;:{&quot;opacity&quot;:1},&quot;at&quot;:1.4,&quot;dur&quot;:0.4,&quot;ease&quot;:[0.23,1,0.32,1]}" style="position:absolute;left:162px;top:30px;width:76px;height:100px;opacity:1"><div class="flex items-center justify-center rounded-full border-2 border-dashed border-(--ci-slot-2) text-[8px] font-medium tracking-[0.04em] text-(--ci-faint)" style="position:absolute;left:11px;top:0;width:54px;height:54px">CCIAA</div><div class="flex justify-center" style="position:absolute;left:0;top:66px;width:76px"><span class="rounded-full border border-(--ci-line) bg-(--ci-card) px-2 py-[3px] text-[10px] text-(--ci-muted)">не нужно</span></div></div></div></div><div class="step__n">04</div><div class="step__t">Регистрация</div><p class="step__d">Налоговая, INPS, торговая палата: только то, что нужно именно вам.</p><span class="tag">Бухгалтер</span></li>
     <li class="step"><div class="ci-zone" aria-hidden="true" data-dur="2.3"><div class="ci-stage ci-art" style="width:250px;height:160px"><div class="rounded-[6px] border-[1.5px] border-(--ci-faint)" style="position:absolute;left:10px;top:12px;width:146px;height:136px"><div class="bg-(--ci-faint)" style="position:absolute;left:90px;top:0;width:1.5px;height:62px"></div><div class="bg-(--ci-faint)" style="position:absolute;left:0;top:74px;width:58px;height:1.5px"></div><div class="bg-(--ci-zone)" style="position:absolute;left:96px;top:131px;width:30px;height:4px"></div></div><div><div class="rounded-full border-[1.5px] border-dashed border-(--ci-faint) bg-(--ci-card)" style="position:absolute;left:26px;top:28px;width:16px;height:16px"></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:0.6},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;scale&quot;:1},&quot;at&quot;:0.4,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="flex items-center justify-center rounded-full bg-(--ci-ink) text-(--ci-bg)" style="position:absolute;left:26px;top:28px;width:16px;height:16px;opacity:1;transform:none"><svg width="9" height="9" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M3.5 8.5l3 3 6-6.5"></path></svg></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0.5},&quot;to&quot;:{&quot;opacity&quot;:1},&quot;at&quot;:0.4,&quot;dur&quot;:0.25,&quot;ease&quot;:[0.23,1,0.32,1]}" class="whitespace-nowrap text-[9.5px] font-medium text-(--ci-ink)" style="position:absolute;left:46px;top:31px;opacity:1">Площадь</div></div><div><div class="rounded-full border-[1.5px] border-dashed border-(--ci-faint) bg-(--ci-card)" style="position:absolute;left:118px;top:106px;width:16px;height:16px"></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:0.6},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;scale&quot;:1},&quot;at&quot;:0.8,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="flex items-center justify-center rounded-full bg-(--ci-ink) text-(--ci-bg)" style="position:absolute;left:118px;top:106px;width:16px;height:16px;opacity:1;transform:none"><svg width="9" height="9" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M3.5 8.5l3 3 6-6.5"></path></svg></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0.5},&quot;to&quot;:{&quot;opacity&quot;:1},&quot;at&quot;:0.8,&quot;dur&quot;:0.25,&quot;ease&quot;:[0.23,1,0.32,1]}" class="whitespace-nowrap text-[9.5px] font-medium text-(--ci-ink)" style="position:absolute;left:110px;top:88px;opacity:1">Вход</div></div><div><div class="rounded-full border-[1.5px] border-dashed border-(--ci-faint) bg-(--ci-card)" style="position:absolute;left:26px;top:100px;width:16px;height:16px"></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:0.6},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;scale&quot;:1},&quot;at&quot;:1.2000000000000002,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="flex items-center justify-center rounded-full bg-(--ci-ink) text-(--ci-bg)" style="position:absolute;left:26px;top:100px;width:16px;height:16px;opacity:1;transform:none"><svg width="9" height="9" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M3.5 8.5l3 3 6-6.5"></path></svg></div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0.5},&quot;to&quot;:{&quot;opacity&quot;:1},&quot;at&quot;:1.2000000000000002,&quot;dur&quot;:0.25,&quot;ease&quot;:[0.23,1,0.32,1]}" class="whitespace-nowrap text-[9.5px] font-medium text-(--ci-ink)" style="position:absolute;left:46px;top:103px;opacity:1">Назначение</div></div><div class="rounded-[10px] border border-(--ci-line) bg-(--ci-card)" style="position:absolute;left:166px;top:28px;width:76px;height:104px"><div class="text-[12px] font-medium text-(--ci-ink)" style="position:absolute;left:10px;top:10px">SCIA</div><div class="text-[8.5px] text-(--ci-muted)" style="position:absolute;left:10px;top:27px">уведомление</div><div class="rounded-full" style="position:absolute;left:10px;top:44px;width:54px;height:5px;background:var(--ci-slot)"></div><div class="rounded-full" style="position:absolute;left:10px;top:54px;width:46px;height:5px;background:var(--ci-slot)"></div><div class="rounded-full" style="position:absolute;left:10px;top:64px;width:56px;height:5px;background:var(--ci-slot)"></div><div class="flex items-center justify-center rounded-full bg-(--ci-zone) text-[9.5px] text-(--ci-muted)" style="position:absolute;left:8px;top:78px;width:58px;height:18px">Подать</div><div data-b="{&quot;from&quot;:{&quot;opacity&quot;:0,&quot;scale&quot;:0.85},&quot;to&quot;:{&quot;opacity&quot;:1,&quot;scale&quot;:1},&quot;at&quot;:1.7,&quot;dur&quot;:0.3,&quot;ease&quot;:[0.23,1,0.32,1]}" class="flex items-center justify-center gap-1 rounded-full bg-(--ci-accent) text-[9.5px] font-medium text-(--ci-on-accent)" style="position:absolute;left:8px;top:78px;width:58px;height:18px;opacity:1;transform:none">Подано<svg width="9" height="9" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M3.5 8.5l3 3 6-6.5"></path></svg></div></div></div></div><div class="step__n">05</div><div class="step__t">Помещение и разрешения</div><p class="step__d">Договор аренды и уведомление об открытии (SCIA).</p><span class="tag">Адвокат</span></li>
@@ -1694,12 +1694,16 @@
 /* Блок «Семь шагов»: эстафета картинок. Конечный кадр уже в разметке, скрипт только проигрывает шаги:
    играет один шаг за раз и только среди шагов, видимых на экране (на телефоне — тот, что на экране), при reduced motion — ничего.
    Наведение мышью на шаг (тап на телефоне) проигрывает этот шаг; пока курсор над блоком или фокус в нём, очередь стоит.
-   Шаг последовательности — data-b = {from, to, at, dur, ease, times} (экспорт из компонентов ~/card-illustrations). */
+   Шаг последовательности — data-b = {from, to, at, dur, ease, times, rewind} (экспорт из компонентов ~/card-illustrations);
+   шаг с rewind перед проигрышем не сбрасывается, а поворачивается назад (карточка 02 — с оборота на лицо). */
 (() => {
   const list = document.querySelector("#start .steps");
   if (!list || !Element.prototype.animate || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const steps = [...list.children].filter((li) => li.querySelector(".ci-zone[data-dur]"));
   if (!steps.length) return;
+  // элементы с rewind — сразу в своём слое: иначе слой появлялся бы в начале поворота назад, и буквы кода на обороте
+  // меняли бы сглаживание на глазах (замер 02.11: 1.53 % пикселей зоны в первый миг поворота, с will-change — 0.00 %)
+  list.querySelectorAll("[data-b]").forEach((el) => { if ("rewind" in JSON.parse(el.dataset.b)) el.style.willChange = "transform"; });
 
   const ORDER = ["x", "y", "scale", "scaleX", "scaleY", "rotate", "rotateX", "rotateY"];
   const FN = { x: "translateX", y: "translateY" }, UNIT = { x: "px", y: "px", rotate: "deg", rotateX: "deg", rotateY: "deg" };
@@ -1728,10 +1732,11 @@
   }
 
   // hovered и focused — раздельно: уход фокуса не снимает паузу курсора, и наоборот
-  let cur = 0, timer = 0, running = [], settling = [], live = false, hovered = false, focused = false, endAt = 0;
+  // gen — номер остановки: проигрыш, отложенный до конца поворота назад, не начнётся, если с тех пор что-то заиграло или блок ушёл с экрана
+  let cur = 0, timer = 0, running = [], settling = [], live = false, hovered = false, focused = false, endAt = 0, gen = 0;
   const visible = new Set();
   const next = (i) => { for (let k = 1; k <= steps.length; k++) { const j = (i + k) % steps.length; if (visible.has(j)) return j; } return i; };
-  const stop = () => { running.forEach((a) => a.cancel()); running = []; endAt = 0; };
+  const stop = () => { running.forEach((a) => a.cancel()); running = []; endAt = 0; gen++; };
   // Мягкий сброс (motion.md: fade 0.3 с, не рывок), а не прыжок в первый кадр. За FADE каждый элемент шага приходит в свой первый кадр:
   // невидимый в нём — тает на месте (снимок поверх), видимый — возвращается к нему, видимый только в нём — проявляется; затем через LEAD
   // шаг собирается. Уходящий посреди проигрыша шаг за FADE доезжает до конечного кадра.
@@ -1760,31 +1765,67 @@
     zone.appendChild(g);
     g.animate([{ opacity: 1 }, { opacity: 0 }], { duration: FADE, easing: "ease-out", fill: "forwards" }).finished.then(() => g.remove(), () => g.remove());
   }
+  // Поворот назад (data-b.rewind): шаг с ним лежит в конечном кадре (карточка 02 — оборотом с кодом) и перед проигрышем не
+  // сбрасывается, а проходит ход своих элементов с rewind назад — те же кадры и кривая, обратный порядок (карточка поворачивается
+  // на лицо); прочие встают в первый кадр в конце поворота — к этому мигу их прячет повёрнутый ребром родитель. Затем шаг играет
+  // с первого кадра и снова ложится в конечный. Ушли во время поворота — шаг поворачивается обратно в конечный кадр.
+  const back = new Map(); // шаг → анимации его поворота назад
+  const turns = (items) => items.some((t) => "rewind" in t.b);
+  const parse = (li) => [...li.querySelectorAll("[data-b]")].map((el) => { const b = JSON.parse(el.dataset.b); return { el, b, kf: frames(b) }; });
+  const first = (kf) => { const f = { ...kf[0] }; delete f.offset; delete f.easing; return f; };
+  const unrewind = (i) => { (back.get(i) || []).forEach((a) => a.cancel()); back.delete(i); };
+  // поворот назад шага i, начало через t0 мс; итог — через сколько мс шаг встанет в первый кадр
+  function rewind(i, items, t0) {
+    const r = items.filter((t) => "rewind" in t.b);
+    const S = Math.min(...r.map((t) => t.b.at)), E = Math.max(...r.map((t) => t.b.at + t.b.dur)), T = (E - S) * 1000;
+    back.set(i, items.map(({ el, b, kf }) => ("rewind" in b
+      ? el.animate(kf, { delay: t0 + (E - b.at - b.dur) * 1000, duration: b.dur * 1000, easing: kf.length > 2 ? "linear" : easing(b.ease), direction: "reverse", fill: "forwards" })
+      : el.animate([first(kf), first(kf)], { delay: t0 + T, duration: 1, fill: "forwards" }))));
+    return t0 + T;
+  }
   function play(i) {
     const out = i !== cur && running.some((a) => a.playState !== "finished") ? [...steps[cur].querySelectorAll("[data-b]")].map((el) => [el, snap(el)]) : [];
-    const items = [...steps[i].querySelectorAll("[data-b]")].map((el) => {
-      const b = JSON.parse(el.dataset.b);
-      const now = snap(el);
-      return { el, b, kf: frames(b), now, v0: shown(b, k0), vNow: lit(now) };
-    });
-    ghost(steps[i], new Set(items.filter((t) => !t.v0 && t.vNow).map((t) => t.el)));
-    const mine = new Set([...out.map(([el]) => el), ...items.map((t) => t.el)]); // прежние «доезды» этих элементов — снять, их вид уже в снимках
+    const items = parse(steps[i]).map((t) => { const now = snap(t.el); return { ...t, now, v0: shown(t.b, k0), vNow: lit(now) }; });
+    const turn = turns(items); // вместо мягкого сброса — поворот назад
+    if (!turn) ghost(steps[i], new Set(items.filter((t) => !t.v0 && t.vNow).map((t) => t.el)));
+    const mine = new Set([...out.map(([el]) => el), ...(turn ? [] : items.map((t) => t.el))]); // прежние «доезды» этих элементов — снять, их вид уже в снимках
     settling = settling.filter((a) => (mine.has(a.effect.target) ? (a.cancel(), false) : a.playState !== "finished"));
-    stop(); clearTimeout(timer); cur = i;
-    endAt = performance.now() + LEAD + steps[i].querySelector(".ci-zone").dataset.dur * 1000;
-    steps.forEach((li, j) => li.classList.toggle("is-active", j === i));
+    stop(); clearTimeout(timer);
+    // ушли во время поворота назад: тот же поворот — обратно, в конечный кадр; дошёл — анимации снять (под ними инлайн-стиль = он же)
+    const r0 = i !== cur && back.get(cur), j = cur;
+    if (r0) {
+      r0.forEach((a) => a.playbackRate > 0 && a.reverse());
+      Promise.all(r0.map((a) => a.finished)).then(() => back.get(j) === r0 && r0.every((a) => a.playbackRate < 0) && unrewind(j), () => {});
+    }
+    cur = i;
+    steps.forEach((li, k) => li.classList.toggle("is-active", k === i));
     // уходящий: от того, что видно сейчас, к конечному кадру (после stop() это инлайн-стиль); оба кадра явно — без неявных кадров
     out.forEach(([el, s]) => settling.push(el.animate([s, snap(el)], { duration: FADE, easing: "ease-out" })));
+    if (!turn) return start(i, items, LEAD);
+    // поворот, шедший обратно, — развернуть; иначе начать — после своего «доезда», если шаг увели только что
+    const left = (a) => a.effect.getComputedTiming().endTime - a.currentTime;
+    let r = back.get(i), end;
+    if (r) { r.forEach((a) => a.playbackRate < 0 && a.reverse()); end = Math.max(...r.map(left)); }
+    else { end = rewind(i, items, Math.max(0, ...settling.filter((a) => items.some((t) => t.el === a.effect.target)).map(left))); r = back.get(i); }
+    const g = gen;
+    Promise.all(r.map((a) => a.finished)).then(() => g === gen && start(i, items, 0), () => {});
+    endAt = performance.now() + end + steps[i].querySelector(".ci-zone").dataset.dur * 1000;
+    schedule();
+  }
+  // проигрыш шага через lead мс; при lead > 0 — с мягким сбросом, после поворота назад (lead 0) шаг уже в первом кадре
+  function start(i, items, lead) {
+    endAt = performance.now() + lead + steps[i].querySelector(".ci-zone").dataset.dur * 1000;
     items.forEach(({ el, b, kf, now, v0, vNow }) => {
       if ("pathLength" in b.to && !el.getAttribute("pathLength")) el.setAttribute("pathLength", "1");
       // fill: backwards — до старта стоит первый кадр; после конца остаётся инлайн-стиль = конечный кадр
-      running.push(el.animate(kf, { delay: LEAD + b.at * 1000, duration: b.dur * 1000, easing: kf.length > 2 ? "linear" : easing(b.ease), fill: "backwards" }));
-      if (!v0) return; // невидимый в первом кадре: его уводит снимок
-      const to = { ...kf[0] }; delete to.offset; delete to.easing;
+      running.push(el.animate(kf, { delay: lead + b.at * 1000, duration: b.dur * 1000, easing: kf.length > 2 ? "linear" : easing(b.ease), fill: "backwards" }));
+      if (!v0 || !lead) return; // невидимый в первом кадре: его уводит снимок
+      const to = first(kf);
       if (!("opacity" in to)) to.opacity = now.opacity;
       const from = vNow ? Object.fromEntries(Object.keys(to).map((k) => [k, now[k]])) : { ...to, opacity: 0 };
       running.push(el.animate([from, to], { duration: FADE, easing: "ease-in-out" })); // создан позже — поверх первого кадра до LEAD
     });
+    unrewind(i); // поворот назад держал первый кадр — снять после новых кадров, иначе в конце проигрыша шаг встал бы в первый кадр
     schedule();
   }
   // следующий шаг — через 900 мс после конца текущего: после наведения текущий мог доиграть давно
@@ -1801,7 +1842,8 @@
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => { const i = steps.indexOf(e.target.closest(".step")); if (e.isIntersecting) visible.add(i); else visible.delete(i); });
     const was = live; live = visible.size > 0;
-    if (!live) { stop(); settling.forEach((a) => a.cancel()); settling = []; clearTimeout(timer); return; }
+    // вне экрана ничего не движется: повороты назад снять — шаг сразу в конечном кадре
+    if (!live) { stop(); settling.forEach((a) => a.cancel()); settling = []; clearTimeout(timer); back.forEach((r) => r.forEach((a) => a.cancel())); back.clear(); return; }
     if (hovered) return; // курсор над блоком: шаг выбирает мышь, прокрутка его не переключает
     if (!was || !visible.has(cur)) play(visible.has(cur) ? cur : next(cur));
   }, { threshold: 0.6 });
