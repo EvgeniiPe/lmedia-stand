@@ -202,6 +202,17 @@ summary.acc__q::-webkit-details-marker { display: none; }
 .hdr__end { display: flex; align-items: center; gap: 20px; }
 .lang { display: flex; gap: 10px; font: 500 13px/1 var(--font); color: var(--meta); }
 .lang b { color: var(--ink); font-weight: 500; }
+.lang a { color: var(--meta); text-decoration: none; }
+.lang a:hover { color: var(--ink); }
+/* меню телефона (кит, «Открытое меню»): белая панель под шапкой; ссылки 16/400 --ink через 14; языки — через 6 после ссылок */
+.menu { display: none; }
+.btn--menu[aria-expanded="true"] .menu__open, .btn--menu[aria-expanded="false"] .menu__close { display: none; }
+@media (max-width: 640px) {
+  .menu:not([hidden]) { display: grid; gap: 14px; justify-items: start; padding: 20px 20px 28px; background: #fff; font-size: 16px; }
+  .menu a { color: var(--ink); text-decoration: none; }
+  .hdr .menu .lang { display: flex; margin-top: 6px; }
+  .hdr .menu .lang a { color: var(--meta); }
+}
 @media (max-width: 900px) { .nav { display: none; } }
 .btn__short, .btn--menu { display: none; }
 @media (max-width: 640px) { .hdr__end { gap: 8px; } .hdr__end .btn { padding: 12px 14px; } .btn__long, .hdr .lang { display: none; } .btn__short { display: inline; } .btn--menu { display: inline-flex; } }

@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>LMedia: юридическое, бухгалтерское и маркетинговое сопровождение бизнеса в Италии</title>
-<link rel="stylesheet" href="ds.css?v=2b25d232de">
+<link rel="alternate" hreflang="ru" href="https://lmedia.it/">
+<link rel="alternate" hreflang="en" href="https://lmedia.it/en/">
+<link rel="alternate" hreflang="x-default" href="https://lmedia.it/">
+<link rel="stylesheet" href="ds.css?v=651342c45c">
 <link rel="preload" href="fonts/anton-lmedia.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/prata-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -671,11 +674,28 @@
     <a href="#services">Услуги</a><a href="#start">Открыть бизнес</a><a href="#how">Как работаем</a><a href="#faq">Вопросы</a>
   </nav>
   <div class="hdr__end">
-    <div class="lang"><b>RU</b><span>EN</span><span>IT</span></div>
-    <a class="btn btn--secondary btn--menu" href="#">Меню</a>
+    <div class="lang"><b>RU</b><a href="en/" hreflang="en" lang="en">EN</a></div>
+    <button class="btn btn--secondary btn--menu" type="button" aria-expanded="false" aria-controls="menu"><span class="menu__open">Меню</span><span class="menu__close">Закрыть</span></button>
     <a class="btn btn--primary btn--pill" href="#contact"><span class="btn__long">Записаться на звонок</span><span class="btn__short">Звонок</span></a>
   </div>
-</div></header>
+</div>
+<nav class="menu" id="menu" hidden>
+  <a href="#services">Услуги</a><a href="#start">Открыть бизнес</a><a href="#how">Как работаем</a><a href="#faq">Вопросы</a>
+  <div class="lang"><b>RU</b><a href="en/" hreflang="en" lang="en">EN</a></div>
+</nav>
+<script>
+/* Меню телефона (кит, «Открытое меню»): панель под шапкой, закрывается той же кнопкой или выбором ссылки;
+   окно шире 640 — меню закрыто (кнопки там нет). */
+(() => {
+  const btn = document.querySelector(".btn--menu"), menu = document.getElementById("menu");
+  const set = (open) => { menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); };
+  btn.addEventListener("click", () => set(menu.hidden));
+  menu.addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) { set(false); btn.focus(); } });
+  matchMedia("(min-width: 641px)").addEventListener("change", (e) => { if (e.matches) set(false); });
+})();
+</script>
+</header>
 
 <main>
 <!-- 2 · Hero -->
