@@ -8,7 +8,7 @@
 <link rel="alternate" hreflang="ru" href="https://lmedia.it/">
 <link rel="alternate" hreflang="en" href="https://lmedia.it/en/">
 <link rel="alternate" hreflang="x-default" href="https://lmedia.it/">
-<link rel="stylesheet" href="ds.css?v=3a91301b1b">
+<link rel="stylesheet" href="ds.css?v=0dbc82201c">
 <link rel="preload" href="fonts/anton-lmedia.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/prata-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -535,6 +535,7 @@
   .sub .card > :last-child { margin-top: auto; }
   .sub__form { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
   .sub__form .input { flex: 1 1 220px; min-width: 0; }
+  .sub__box { display: grid; gap: 12px; width: 100%; }
   @media (max-width: 640px) { .sub { grid-template-columns: 1fr; } }
   .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-card); }
   .why .card { display: grid; align-content: start; }
@@ -2045,21 +2046,23 @@
         </div>
       </div>
       <div class="card">
-        <form class="form" onsubmit="return false">
-          <div class="field"><label class="field__label" for="n">Имя *</label><input class="input" id="n" placeholder="Как к вам обращаться"></div>
-          <div class="field"><label class="field__label" for="e">Email *</label><input class="input" id="e" type="email" placeholder="you@example.com"></div>
-          <div class="field"><label class="field__label" for="p">Телефон или мессенджер <span class="field__hint">необязательно</span></label><input class="input" id="p" placeholder="+39 … или ник в мессенджере"></div>
+        <form class="form" id="lead" method="post" novalidate action="https://lmedia-lead.lmedia-italia.workers.dev/" data-busy="Отправляем…" data-need="Заполните это поле." data-mail="Проверьте адрес — кажется, он неполный." data-agree="Без согласия мы не можем принять заявку.">
+          <div class="field"><label class="field__label" for="n">Имя *</label><input class="input" id="n" name="FIRSTNAME" autocomplete="name" maxlength="100" required placeholder="Как к вам обращаться"></div>
+          <div class="field"><label class="field__label" for="e">Email *</label><input class="input" id="e" name="EMAIL" type="email" autocomplete="email" maxlength="200" required placeholder="you@example.com"></div>
+          <div class="field"><label class="field__label" for="p">Телефон или мессенджер <span class="field__hint">необязательно</span></label><input class="input" id="p" name="CONTACT" autocomplete="tel" maxlength="200" placeholder="+39 … или ник в мессенджере"></div>
           <div class="field"><span class="field__label">Что нужно <span class="field__hint">можно несколько, необязательно</span></span>
-            <div class="chips"><span class="chip">Юридическое</span><span class="chip">Бухгалтерия и налоги</span><span class="chip">Маркетинг</span><span class="chip">Открыть бизнес целиком</span><span class="chip">Пока не знаю</span></div>
+            <div class="chips"><button class="chip" type="button" aria-pressed="false">Юридическое</button><button class="chip" type="button" aria-pressed="false">Бухгалтерия и налоги</button><button class="chip" type="button" aria-pressed="false">Маркетинг</button><button class="chip" type="button" aria-pressed="false">Открыть бизнес целиком</button><button class="chip" type="button" aria-pressed="false">Пока не знаю</button></div>
           </div>
-          <div class="field"><label class="field__label" for="m">Опишите задачу *</label><textarea class="textarea" id="m" placeholder="Чем занимаетесь и что нужно сделать"></textarea></div>
-          <div class="field"><span class="field__label">Файл <span class="field__hint">необязательно</span></span><div class="file"><span class="btn btn--secondary"><span class="ico ico--s" aria-hidden="true"></span>Прикрепить файл</span><span class="caption">например, письмо из налоговой · PDF, JPG или PNG</span></div></div>
-          <label class="check"><span class="check__box"></span><span>Я прочитал(а) <u>политику конфиденциальности</u> и согласен(на) на обработку моих данных для ответа на заявку. *</span></label>
+          <div class="field"><label class="field__label" for="m">Опишите задачу *</label><textarea class="textarea" id="m" name="MESSAGE" maxlength="3000" required placeholder="Чем занимаетесь и что нужно сделать"></textarea><span class="caption">Файлы, например письмо из налоговой, пришлите на <a href="mailto:info@lmedia.it">info@lmedia.it</a></span></div>
+          <div class="field"><label class="check"><input class="check__in" id="agree" type="checkbox" required><span class="check__box" aria-hidden="true"></span><span>Я прочитал(а) <u>политику конфиденциальности</u> и согласен(на) на обработку моих данных для ответа на заявку. *</span></label></div>
+          <input type="hidden" name="TOPICS" value=""><input type="hidden" name="CONSENT_AT" value=""><input type="hidden" name="LANG" value="ru"><input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
+          <div class="form-msg" id="lead-fail" role="alert" hidden><span><b>Заявка не отправилась.</b> Попробуйте ещё раз или напишите на <a href="mailto:info@lmedia.it">info@lmedia.it</a>.</span></div>
           <div class="form__foot">
             <button class="btn btn--primary" type="submit">Отправить</button>
             <span class="small">Поля со * обязательны. Без рассылок.</span>
           </div>
         </form>
+        <div class="form-msg" id="lead-ok" role="status" tabindex="-1" hidden><span><b>Заявка отправлена.</b> Ответим на почту в ближайшие рабочие дни.</span></div>
       </div>
     </div>
   </div>
@@ -2081,11 +2084,100 @@
       <div class="card">
         <h3 class="h3">На почту</h3>
         <p class="body">То же одним письмом на ваш адрес.</p>
-        <form class="sub__form" onsubmit="return false"><input class="input" id="sub-email" type="email" placeholder="you@example.com" aria-label="Email для подписки"><button class="btn btn--secondary" type="submit">Подписаться</button></form>
+        <div class="sub__box">
+          <form class="sub__form" id="sub" method="post" novalidate action="https://d8706dc6.sibforms.com/serve/MUIFAIN75mAEXquhV6jKMtOSoewvO5q6fyCS-dHCn5lIWACqVeySzg2tdnAsjV7Cl6ojAbZyA1aC83gWvAa1GuXYWdptZVl1Tu9g0wkG5WpzNunDC3iydYr5OiMOixoUELinrk4c-hwmY4F7wLypOv6ugaaIGTtnSsoKIuRKjxQHxuc3ewXpDNikZwvawk0wGHWAYM3UrMZgmgaeGA==" data-busy="Отправляем…" data-need="Заполните это поле." data-mail="Проверьте адрес — кажется, он неполный."><input class="input" id="sub-email" name="EMAIL" type="email" autocomplete="email" maxlength="200" required placeholder="you@example.com" aria-label="Email для подписки"><input type="hidden" name="locale" value="ru"><input type="hidden" name="html_type" value="simple"><input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" hidden><button class="btn btn--secondary" type="submit">Подписаться</button></form>
+          <div class="form-msg" id="sub-fail" role="alert" hidden><span><b>Не получилось подписаться.</b> Попробуйте ещё раз или напишите на <a href="mailto:info@lmedia.it">info@lmedia.it</a>.</span></div>
+          <div class="form-msg" id="sub-ok" role="status" tabindex="-1" hidden><span><b>Почти готово.</b> Мы отправили письмо: подтвердите подписку по ссылке в нём.</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+<!-- forms:begin -->
+<script>
+/* Forms (owner 27.11): application #lead -> own Cloudflare Worker (worker/lead.js: Brevo contact + full email),
+   newsletter #sub -> Brevo form. POST urlencoded to the form's action with fetch, both answer {"success":true|false,"message":...}; only success === true counts as sent. Texts for the script live in
+   data-* attributes and in markup (build_en.py translates them; no Cyrillic in script code). */
+(function () {
+  var MAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function why(form, f) {
+    if (f.type === 'checkbox') return f.checked ? '' : form.dataset.agree;
+    var v = f.value.trim();
+    if (!v) return form.dataset.need;
+    if (f.type === 'email' && !(f.validity.valid && MAIL.test(v))) return form.dataset.mail;
+    return '';
+  }
+  function mark(form, f, msg) {
+    var id = f.id + '-err', e = document.getElementById(id);
+    if (!msg) {
+      if (e) e.remove();
+      f.removeAttribute('aria-invalid'); f.removeAttribute('aria-describedby'); f.classList.remove('input--error');
+      return;
+    }
+    if (!e) {
+      e = document.createElement('span'); e.className = 'field__error'; e.id = id;
+      var box = f.closest('.field');
+      if (box) box.appendChild(e); else form.after(e);
+    }
+    e.textContent = msg;
+    f.setAttribute('aria-invalid', 'true'); f.setAttribute('aria-describedby', id);
+    if (f.type !== 'checkbox') f.classList.add('input--error');
+  }
+  function valid(form) {
+    var first = null;
+    form.querySelectorAll('[required]').forEach(function (f) {
+      var msg = why(form, f);
+      mark(form, f, msg);
+      if (msg && !first) first = f;
+    });
+    if (first) first.focus();
+    return !first;
+  }
+  function send(form, fail, ok, before) {
+    form.addEventListener('input', function (ev) { if (ev.target.hasAttribute('aria-invalid')) mark(form, ev.target, why(form, ev.target)); });
+    form.addEventListener('change', function (ev) { if (ev.target.hasAttribute('aria-invalid')) mark(form, ev.target, why(form, ev.target)); });
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var btn = form.querySelector('[type=submit]');
+      if (btn.disabled) return;
+      fail.hidden = true;
+      if (!valid(form)) return;
+      if (before) before();
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = form.dataset.busy;
+      var ctl = new AbortController(), timer = setTimeout(function () { ctl.abort(); }, 20000);
+      fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)), signal: ctl.signal })
+        .then(function (r) { return r.json(); })
+        .then(function (j) { return !!j && j.success === true; })
+        .catch(function () { return false; })
+        .then(function (sent) {
+          clearTimeout(timer);
+          btn.disabled = false; btn.textContent = label;
+          if (sent) { form.hidden = true; ok.hidden = false; ok.focus(); }
+          else { fail.hidden = false; }
+        });
+    });
+  }
+  var lead = document.getElementById('lead');
+  if (lead) {
+    lead.querySelectorAll('.chip').forEach(function (c) {
+      c.addEventListener('click', function () {
+        var on = c.getAttribute('aria-pressed') !== 'true';
+        c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        c.classList.toggle('chip--on', on);
+      });
+    });
+    send(lead, document.getElementById('lead-fail'), document.getElementById('lead-ok'), function () {
+      lead.elements.TOPICS.value = Array.prototype.map.call(lead.querySelectorAll('.chip[aria-pressed="true"]'),
+        function (c) { return c.textContent.replace(/\s+/g, ' ').trim(); }).join(', ');
+      lead.elements.CONSENT_AT.value = new Date().toISOString();
+    });
+  }
+  var sub = document.getElementById('sub');
+  if (sub) send(sub, document.getElementById('sub-fail'), document.getElementById('sub-ok'));
+})();
+</script>
+<!-- forms:end -->
 </main>
 
 <!-- 11 · Footer -->
@@ -2120,7 +2212,7 @@
     </div>
     <div class="ftr__legal">
       <span>LMedia · P.IVA 07452100485 · PEC lmedia@pec.it · REA <span class="ph">[FI-…]</span> · Sede legale Piazza Vittorio Veneto, 4, 50123 Firenze</span>
-      <span>Политика конфиденциальности · Сайт не использует cookie и не передаёт данные посетителей третьим лицам</span>
+      <span>Политика конфиденциальности · Сайт не использует cookie. Данные из форм хранятся в сервисе Brevo и нужны только для ответа на заявку и рассылки.</span>
     </div>
   </div>
 </footer>
