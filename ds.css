@@ -181,7 +181,7 @@ button.chip { border: 0; font-family: var(--font); cursor: pointer; }   /* ва�
 .check__in[aria-invalid] + .check__box { border-color: var(--text); }
 .check__box { flex: none; width: 18px; height: 18px; border-radius: 6px; border: 1px solid var(--faint); margin-top: 1px; background: #fff; }
 .check__box--on, .check__in:checked + .check__box { background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.2l2.6 2.6L13 6.4' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat; border-color: var(--ink); }
-.check u { text-decoration-color: var(--faint); text-underline-offset: 3px; }
+.check u, .check__link { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; } /* ссылка на политику — вид прежнего <u> (27.11) */
 
 .acc { border-top: 1px solid var(--line); }
 .acc:last-child { border-bottom: 1px solid var(--line); }
@@ -212,6 +212,7 @@ summary.acc__q::-webkit-details-marker { display: none; }
 .ph { color: var(--meta); }
 
 /* header / footer */
+html { scroll-padding-top: 72px; } /* = высота шапки .hdr__in: пункты меню не прячут заголовок под липкой шапкой (владелец 27.11) */
 .hdr { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); }
 .hdr__in { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; position: relative; }
 @media (min-width: 901px) { .nav { position: absolute; left: 50%; transform: translateX(-50%); } }
@@ -242,6 +243,7 @@ summary.acc__q::-webkit-details-marker { display: none; }
 .ftr__h { font: 500 13px/1 var(--font); color: var(--ink); margin-bottom: 6px; }
 .ftr__legal { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); display: flex;
               flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--meta); }
+.ftr__legal a { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; } /* политика (27.11) */
 @media (max-width: 900px) { .ftr__grid { grid-template-columns: 1fr; } }
 
 /* round 4: states and new components */
@@ -283,3 +285,25 @@ summary.acc__q::-webkit-details-marker { display: none; }
 .next li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; font-size: 14px; line-height: 1.5; color: var(--text); }
 .next b { font: 500 13px/22px var(--font); color: var(--meta); }
 @media (max-width: 640px) { .stat__n { font-size: 28px; } }
+
+/* страница «Политика конфиденциальности» (privacy.html, en/privacy.html; владелец 27.11): колонка текста, таблицы на телефоне — столбиком */
+@media (max-width: 640px) { .hdr--doc .lang { display: flex; } }
+@media (max-width: 400px) { .doc .h2 { font-size: 30px; } } /* «конфиденциальности» в 34 px на 360 вылезало на 13 px (замер 27.11) */
+.doc { max-width: 760px; padding: 64px 0 var(--section); }
+.doc .small { margin-top: 16px; }
+.doc .h3 { margin: 48px 0 0; }
+.doc .body { margin-top: 12px; }
+.doc ul { margin-top: 12px; padding-left: 20px; list-style: disc; }
+.doc li + li { margin-top: 8px; }
+.doc table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; line-height: 1.5; color: var(--text); }
+.doc th { text-align: left; font-weight: 500; color: var(--ink); padding: 0 16px 8px 0; }
+.doc td { vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid var(--line); }
+.doc td:first-child { color: var(--ink); }
+.doc a { color: inherit; }
+@media (max-width: 640px) {
+  .doc { padding-top: 40px; }
+  .doc thead { display: none; }
+  .doc table, .doc tbody, .doc tr, .doc td { display: block; }
+  .doc tr { border-top: 1px solid var(--line); padding: 12px 0; }
+  .doc td { border: 0; padding: 2px 0; }
+}
